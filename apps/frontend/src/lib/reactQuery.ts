@@ -1,14 +1,15 @@
 // src/lib/reactQuery.ts
 import { QueryClient } from '@tanstack/react-query';
 import { notifications } from '@mantine/notifications';
-import { handleApiError } from '../services/api/errorHandler'; // your custom error handler
+import { AxiosError } from 'axios';
+import { handleApiError } from '../services/api/errorHandler';
 
 // Retry Logic
-
-const shouldRetry = (failureCount: number, error: any): boolean => {
+const shouldRetry = (failureCount: number, error: unknown): boolean => {
   if (failureCount >= 3) return false;
 
-  const status = error?.response?.status;
+  const axiosError = error as AxiosError;
+  const status = axiosError?.response?.status;
 
   // Do not retry for client-side or validation errors
   if (status && [400, 401, 403, 404, 422].includes(status)) {
@@ -31,7 +32,7 @@ export const queryClient = new QueryClient({
       refetchOnMount: false,
     },
     mutations: {
-      onError: (error: any) => {
+      onError: (error: unknown) => {
         handleApiError(error);
 
         notifications.show({

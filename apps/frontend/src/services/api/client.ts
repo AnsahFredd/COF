@@ -1,12 +1,11 @@
 /**
  * @description
- * The backbone of API communiction system
+ * The backbone of API communication system
  * Manages the authentication automatically by:
  * - Attaching the Bearer token to each request
- * - Handleing 401 errors by refreshing tokens
+ * - Handling 401 errors by refreshing tokens
  * - Retry failed requests after refresh
  * - Redirecting to the login route if refresh fails
- *
  */
 
 import axios, { type AxiosInstance, type InternalAxiosRequestConfig, AxiosError } from 'axios';
@@ -38,7 +37,9 @@ apiClient.interceptors.request.use(
   (config: InternalAxiosRequestConfig) => {
     const token = tokenManager.getToken();
     if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
-    if (env.IS_DEVELOPMENT) console.log('📤 API Request', config.method, config.url, config.data);
+    if (env.IS_DEVELOPMENT) {
+      console.warn('📤 API Request', config.method, config.url, config.data);
+    }
     return config;
   },
   (error) => Promise.reject(error)
@@ -47,7 +48,9 @@ apiClient.interceptors.request.use(
 // Response Interceptor
 apiClient.interceptors.response.use(
   (res) => {
-    if (env.IS_DEVELOPMENT) console.log('✅ API Response', res.status, res.config.url, res.data);
+    if (env.IS_DEVELOPMENT) {
+      console.warn('✅ API Response', res.status, res.config.url, res.data);
+    }
     return res;
   },
   async (error) => {
