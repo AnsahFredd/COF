@@ -1,0 +1,137 @@
+.footer {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  color: white;
+  position: relative;
+  padding: 2rem 0 1.25rem;
+}
+
+.innerContainer {
+  max-width: 1200px;
+}
+
+.topGrid {
+  margin-bottom: 2rem;
+}
+
+.tagline {
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 300;
+  line-height: 1.3;
+  margin-left: 20px;
+}
+
+.highlight {
+  font-weight: 600;
+  background: linear-gradient(to right, #f59e0b, #fcd34d);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.decorativeBar {
+  width: 4px;
+  height: 128px;
+  margin-left: 20px;
+  transform: rotate(12deg);
+  background-color: #fff;
+}
+
+.sectionTitle {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: white;
+  margin: 0 0 1rem 0;
+}
+
+.label {
+  color: #9ca3af;
+  margin-bottom: 0.25rem;
+  font-weight: 400;
+  font-size: 0.875rem;
+}
+
+.text {
+  color: #e5e7eb;
+  margin: 0;
+}
+
+.link {
+  color: #f59e0b;
+  text-decoration: none;
+  transition: color 0.3s;
+  display: inline-block;
+}
+
+.link:hover {
+  color: #fbbf24;
+  text-decoration: none;
+}
+
+.socialLink {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s;
+  color: white;
+  border: none;
+}
+
+.socialLink:hover {
+  background-color: rgba(245, 158, 11, 0.1);
+  transform: scale(1.1);
+  color: #f59e0b;
+}
+
+.bottomSection {
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  padding-top: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #9ca3af;
+  text-align: center;
+}
+
+.copyright,
+.reserved {
+  margin: 0;
+  color: #9ca3af;
+}
+
+.legalLinks {
+  justify-content: center;
+}
+
+.gradientOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(to right, transparent, #f59e0b, transparent);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .footer {
+    padding: 2rem 0 1rem;
+  }
+
+  .topGrid {
+    margin-bottom: 1.5rem;
+  }
+
+  .tagline {
+    font-size: 1.25rem;
+  }
+
+  .sectionTitle {
+    font-size: 1rem;
+  }
+}

@@ -6,38 +6,7 @@
  */
 
 import { z } from 'zod';
-
-const emailValidator = z
-  .email({ message: 'Please enter a valid email address' })
-  .min(1, 'Email is required')
-  .toLowerCase()
-  .trim();
-
-const passwordValidator = z
-  .string()
-  .min(1, 'Password is required')
-  .min(8, 'Password must be at least 8 characters')
-  .regex(
-    /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-    'Password must contain at least one uppercase letter, one lowercase letter, and one number'
-  );
-
-const phoneValidator = z
-  .string()
-  .regex(
-    /^(\+233|0)(2[0-9]|5[0-9])[0-9]{7}$/,
-    'Please enter a valid phone number (e.g., 0244 123 456)'
-  )
-  .optional();
-
-const nameValidator = (fieldName: string) =>
-  z
-    .string()
-    .min(1, `${fieldName} is required`)
-    .min(2, `${fieldName} must be at least 2 characters`)
-    .max(50, `${fieldName} must not exceed 50 characters`)
-    .regex(/^[a-zA-Z\s]+$/, `${fieldName} can only contain letters and spaces`)
-    .trim();
+import { emailValidator, passwordValidator, phoneValidator, nameValidator } from '../base';
 
 //  Auth Schemas
 

@@ -1,0 +1,140 @@
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.2rem 2rem;
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  max-width: 100% !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.container:hover {
+  box-shadow: 0 6px 30px rgba(0, 0, 0, 0.12);
+}
+
+.logo {
+  font-size: 24px;
+  font-weight: 600;
+  transition: transform 0.3s ease;
+}
+
+.logo:hover {
+  transform: scale(1.05);
+}
+
+.logo img {
+  filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.navLinks {
+  display: flex;
+  gap: 2.5rem;
+}
+
+.navLinks a {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+}
+
+.navLinks a::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37, #f4e4c1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLinks a:hover {
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.navLinks a:hover::after {
+  width: 100%;
+}
+
+.navLinks a,
+.contactLink {
+  position: relative;
+  font-weight: 500;
+  letter-spacing: 1px;
+  color: #2c3e50;
+  transition: all 0.3s ease;
+  padding: 0.5rem 0;
+  text-decoration: none;
+}
+
+.navLinks a::after,
+.contactLink::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #d4af37, #f4e4c1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.navLinks a:hover,
+.contactLink:hover {
+  color: #d4af37;
+  transform: translateY(-2px);
+}
+
+.navLinks a:hover::after,
+.contactLink:hover::after {
+  width: 100%;
+}
+
+.mobileNavLink {
+  color: #2c3e50; 
+  text-transform: uppercase;
+  font-size: 16px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.mobileNavLink:hover {
+  color: #8c7a11;
+  transform: translateY(-2px);
+}
+
+.button {
+  padding: 10px 24px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: 2px solid #d4af37;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: #d4af37;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.button:hover {
+  background: #d4af37;
+  color: #ffffff;
+  border-color: #d4af37;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 25px rgba(212, 175, 55, 0.4);
+}
+
+.button:active {
+  transform: translateY(0);
+}
