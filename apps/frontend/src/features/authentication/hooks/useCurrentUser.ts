@@ -1,6 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { authApi } from '../api/authApi';
-import { tokenManager } from 'src/helpers/storage/tokenManager';
+import { tokenManager } from 'src/helpers/tokenManager';
 import { queryKeys } from 'src/lib/reactQuery';
 
 /**

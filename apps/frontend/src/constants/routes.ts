@@ -17,6 +17,7 @@ export const ROUTES = {
   // Public Routes
   HOME: '/',
   SERVICES: '/services',
+  SERVICE_DETAILS: '/services/:slug',
   BOOKING: '/book-us',
   PORTFOLIO: '/portfolio-gallery',
 

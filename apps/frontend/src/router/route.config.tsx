@@ -17,6 +17,10 @@ import { lazy, type JSX } from 'react';
 const NotFoundPage = lazy(() => import('src/pages/Error/NotFoundPage'));
 
 const HomePage = lazy(() => import('src/pages/Home/HomePage'));
+const ServicePage = lazy(() => import('src/pages/Services/ServicePage'));
+const ServiceDetail = lazy(() => import('src/pages/Services/ServiceDetail'));
+const ContactPage = lazy(() => import('src/pages/contact/ContactPage'));
+const PortfolioPage = lazy(() => import('src/pages/portfolio/PortfolioPage'));
 
 const LoginPage = lazy(() => import('src/pages/auth/LoginPage'));
 const SignupPage = lazy(() => import('src/pages/auth/SignupPage'));
@@ -36,6 +40,10 @@ export interface AppRoute {
 export const appRoutes: AppRoute[] = [
   // Public Routes
   { path: ROUTES.HOME, element: <HomePage /> },
+  { path: ROUTES.SERVICES, element: <ServicePage /> },
+  { path: ROUTES.SERVICE_DETAILS, element: <ServiceDetail /> },
+  { path: ROUTES.CONTACT, element: <ContactPage /> },
+  { path: ROUTES.PORTFOLIO, element: <PortfolioPage /> },
 
   // Auth Routes
   { path: ROUTES.LOGIN, element: <LoginPage /> },

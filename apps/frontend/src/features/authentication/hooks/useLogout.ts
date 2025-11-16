@@ -1,7 +1,7 @@
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { authApi } from '../api/authApi';
-import { tokenManager } from 'src/helpers/storage/tokenManager';
+import { tokenManager } from 'src/helpers/tokenManager';
 import { ROUTES } from 'src/constants/routes';
 
 /**

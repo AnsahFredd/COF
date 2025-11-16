@@ -1,0 +1,542 @@
+.heroContainer {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.videoBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+.videoOverlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.4) 0%,
+    rgba(0, 0, 0, 0.5) 50%,
+    rgba(0, 0, 0, 0.6) 100%
+  );
+  z-index: 2;
+}
+
+.gradientBg {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    135deg,
+    #0a0a0a 0%,
+    #1a1a2e 25%,
+    #16213e 50%,
+    #0f3460 75%,
+    #0a0a0a 100%
+  );
+  background-size: 400% 400%;
+  animation: gradientShift 15s ease infinite;
+  z-index: 1;
+}
+
+/* Subtle gradient shift animation for atmospheric feel */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Semi-transparent dark overlay for text readability */
+.gradientOverlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.6) 100%);
+  z-index: 2;
+}
+
+/* Updated hero content for video background layout */
+.heroContent {
+  position: relative;
+  z-index: 3;
+  text-align: center;
+  padding: 40px 20px;
+}
+
+/* Eyebrow text - uppercase, gold, elegant */
+.eyebrow {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: #d4af37;
+  text-transform: uppercase;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+/* Main title - large, bold serif font */
+.heroTitle {
+  font-size: clamp(2.5rem, 8vw, 5rem);
+  font-weight: 700;
+  color: #ffffff;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 0.02em;
+  line-height: 1.2;
+  margin: 16px 0;
+}
+
+/* Subtitle - modern font, refined weight */
+.heroSubtitle {
+  font-size: clamp(1.25rem, 3vw, 1.75rem);
+  font-weight: 600;
+  color: #f5f5f5;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+  letter-spacing: 0.05em;
+  margin-bottom: 12px;
+}
+
+/* Tagline - soft gray, italic, elegant */
+.heroDescription {
+  font-size: clamp(0.95rem, 2vw, 1.125rem);
+  font-weight: 300;
+  color: #b0b0b0;
+  font-family: 'Cormorant Garamond', serif;
+  font-style: italic;
+  letter-spacing: 0.01em;
+  line-height: 1.6;
+  margin: 20px 0 32px 0;
+  max-width: 600px;
+}
+
+/* CTA button with gold accent and hover effects */
+.ctaButton {
+  padding: 14px 40px !important;
+  text-align: center;
+  font-size: 1rem !important;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #ffffff !important;
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.15),
+    rgba(212, 175, 55, 0.05)
+  ) !important;
+  border: 2px solid #d4af37 !important;
+  border-radius: 2px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.ctaButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.2), transparent);
+  transition: left 0.5s ease;
+}
+
+.ctaButton:hover {
+  background: linear-gradient(
+    135deg,
+    rgba(212, 175, 55, 0.25),
+    rgba(212, 175, 55, 0.15)
+  ) !important;
+  border-color: #ffd700 !important;
+  box-shadow:
+    0 0 24px rgba(212, 175, 55, 0.4),
+    inset 0 0 24px rgba(212, 175, 55, 0.1) !important;
+  transform: translateY(-2px);
+}
+
+.ctaButton:hover::before {
+  left: 100%;
+}
+
+/* Fade-in and upward animation for all text elements */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Animated scroll indicator at bottom */
+.scrollIndicator {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 4;
+  animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateX(-50%) translateY(10px);
+    opacity: 0.7;
+  }
+}
+
+.scrollDot {
+  width: 8px;
+  height: 24px;
+  border: 2px solid #d4af37;
+  border-radius: 4px;
+  position: relative;
+}
+
+.scrollDot::before {
+  content: '';
+  position: absolute;
+  width: 2px;
+  height: 6px;
+  background: #d4af37;
+  left: 50%;
+  top: 4px;
+  transform: translateX(-50%);
+  border-radius: 2px;
+  animation: scrollBounce 1.5s infinite;
+}
+
+@keyframes scrollBounce {
+  0%,
+  100% {
+    transform: translateX(-50%) translateY(0);
+  }
+  50% {
+    transform: translateX(-50%) translateY(6px);
+  }
+}
+
+/* ============================================
+   MASONRY GALLERY STYLES (existing)
+   ============================================ */
+
+.myMasonryGrid {
+  display: flex;
+  margin-left: -16px;
+  width: auto;
+}
+
+.myMasonryGridColumn {
+  padding-left: 16px;
+  background-clip: padding-box;
+}
+
+.imageCard {
+  position: relative;
+  margin-bottom: 16px;
+  aspect-ratio: auto;
+}
+
+.imageWrapper {
+  position: relative;
+  margin-bottom: 0;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #fff;
+}
+
+.imageWrapper:hover {
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+}
+
+.imageWrapper:hover .imageOverlay {
+  opacity: 1;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.imageWrapper:hover .image {
+  transform: scale(1.04);
+}
+
+.imageOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(0, 0, 0, 0.05) 100%);
+  opacity: 0;
+  transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  pointer-events: none;
+}
+
+/* ============================================
+   LIGHTBOX STYLES
+   ============================================ */
+
+.portfolioLightbox .yarl__container {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 40 !important;
+  background-color: rgba(0, 0, 0, 0.5) !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: visible !important;
+  padding-top: 80px;
+  backdrop-filter: blur(2px);
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.portfolioLightbox .yarl__slide_image {
+  max-height: 80vh !important;
+  object-fit: contain;
+  border-radius: 8px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+  animation: slideUp 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.portfolioLightbox .yarl__button {
+  color: #ffd700 !important;
+  font-size: 2.5rem !important;
+  z-index: 60;
+  opacity: 0.9 !important;
+  background-color: rgba(0, 0, 0, 0.7) !important;
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  backdrop-filter: blur(8px);
+}
+
+.portfolioLightbox .yarl__button:hover {
+  background-color: rgba(255, 215, 55, 0.15) !important;
+  color: #ffd700 !important;
+  transform: scale(1.15);
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
+}
+
+.portfolioLightbox .yarl__button_prev {
+  left: 20px !important;
+}
+
+.portfolioLightbox .yarl__button_next {
+  right: 20px !important;
+}
+
+.customCloseButton {
+  position: fixed;
+  top: 24px;
+  right: 24px;
+  font-size: 2.5rem;
+  color: #ffd700;
+  background: rgba(0, 0, 0, 0.7);
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+  z-index: 60 !important;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(8px);
+  outline: none;
+  padding: 0;
+}
+
+.customCloseButton:hover {
+  color: #ffd700;
+  background-color: rgba(255, 215, 0, 0.15);
+  border-color: rgba(255, 215, 0, 0.8);
+  transform: scale(1.1);
+  box-shadow: 0 0 16px rgba(255, 215, 0, 0.3);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+
+@media (max-width: 768px) {
+  .myMasonryGrid {
+    margin-left: -12px;
+  }
+
+  .myMasonryGridColumn {
+    padding-left: 12px;
+  }
+
+  .imageCard {
+    margin-bottom: 12px;
+  }
+
+  .imageWrapper {
+    border-radius: 6px;
+  }
+
+  .customCloseButton {
+    display: flex !important;
+    width: 48px;
+    height: 48px;
+    font-size: 2rem;
+  }
+
+  .heroContainer {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .heroContent {
+    padding: 60px 20px;
+  }
+
+  .ctaButton {
+    padding: 12px 32px !important;
+    font-size: 0.9rem !important;
+  }
+
+  .videoBg {
+    object-position: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .myMasonryGrid {
+    margin-left: -8px;
+  }
+
+  .myMasonryGridColumn {
+    padding-left: 8px;
+  }
+
+  .imageCard {
+    margin-bottom: 8px;
+  }
+
+  .imageWrapper {
+    border-radius: 4px;
+  }
+
+  .portfolioLightbox .yarl__button {
+    display: none !important;
+  }
+
+  .customCloseButton {
+    top: 16px;
+    right: 16px;
+    width: 44px;
+    height: 44px;
+    font-size: 1.5rem;
+  }
+
+  .heroContainer {
+    height: auto;
+    min-height: 100vh;
+  }
+
+  .heroContent {
+    padding: 50px 16px;
+  }
+
+  .eyebrow {
+    letter-spacing: 0.12em;
+  }
+
+  .ctaButton {
+    padding: 12px 28px !important;
+    font-size: 0.85rem !important;
+  }
+
+  .videoBg {
+    object-position: center 30%;
+  }
+}
+
+/* ============================================
+   ACCESSIBILITY & INTERACTIONS
+   ============================================ */
+
+@media (prefers-reduced-motion: reduce) {
+  .imageWrapper,
+  .image,
+  .imageOverlay,
+  .customCloseButton,
+  .portfolioLightbox .yarl__button,
+  .scrollIndicator,
+  .gradientBg {
+    transition: none !important;
+    animation: none !important;
+  }
+
+  .ctaButton::before {
+    animation: none !important;
+  }
+}
+
+@supports not (font-family: 'Playfair Display') {
+  .heroTitle {
+    font-family: Georgia, serif;
+  }
+
+  .eyebrow,
+  .heroDescription {
+    font-family: 'Georgia', serif;
+  }
+}

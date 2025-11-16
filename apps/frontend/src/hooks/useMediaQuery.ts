@@ -10,8 +10,8 @@ import { useMediaQuery as responsiveMediaQuery } from '@mantine/hooks';
 
 const BREAKPOINTS = {
   mobile: '(max-width: 768px)',
-  tablet: '(max-width: 1024)',
-  desktop: '(min-width: 1025)',
+  tablet: '(max-width: 1024px)',
+  desktop: '(min-width: 1025px)',
 };
 
 export const useMediaQuery = (key: keyof typeof BREAKPOINTS): boolean => {
