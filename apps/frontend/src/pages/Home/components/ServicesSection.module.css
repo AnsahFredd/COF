@@ -1,0 +1,165 @@
+.servicesContainer {
+  padding: 80px 0;
+  background: linear-gradient(to bottom, #fafafa 0%, #ffffff 100%);
+}
+
+.sectionTitle {
+  text-align: center;
+  margin-bottom: 60px;
+  padding: 0 20px;
+}
+
+.mainTitle {
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  margin-bottom: 16px;
+  color: #2c2c2c;
+  line-height: 1.3;
+}
+
+.subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: #666;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.servicesGrid {
+  display: grid;
+  gap: 24px;
+  padding: 0 20px;
+  max-width: 1600px;
+  margin: 0 auto;
+}
+
+/* Main services - ALWAYS 5 columns on large screens */
+.mainServicesGrid {
+  grid-template-columns: repeat(5, 1fr);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1400px) {
+  .mainServicesGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .mainServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 640px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+}
+
+.serviceCard {
+  position: relative;
+  height: 450px;
+  border-radius: 16px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+}
+
+.serviceCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+}
+
+.serviceImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.serviceCard:hover .serviceImage {
+  transform: scale(1.1);
+}
+
+.serviceOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.85) 0%,
+    rgba(0, 0, 0, 0.6) 50%,
+    transparent 100%
+  );
+  padding: 40px 24px 24px;
+  transition: all 0.4s ease;
+}
+
+.serviceCard:hover .serviceOverlay {
+  background: linear-gradient(
+    to top,
+    rgba(0, 0, 0, 0.9) 0%,
+    rgba(0, 0, 0, 0.7) 50%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+
+.serviceTitle {
+  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  color: var(--gold-color);
+  margin-bottom: 8px;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+}
+
+.serviceCard:hover .serviceTitle {
+  transform: translateY(-4px);
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+}
+
+.serviceDescription {
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.4s ease;
+  max-height: 0;
+}
+
+.serviceCard:hover .serviceDescription {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: 100px;
+}
+
+.divider {
+  width: 120px;
+  height: 3px;
+  background: linear-gradient(to right, transparent, var(--gold-color), transparent);
+  margin: 60px auto;
+}
+
+.ctaSection {
+  text-align: center;
+  margin-top: 60px;
+  padding: 0 20px;
+}
+
+.ctaButton {
+  font-size: 1.1rem;
+  padding: 16px 48px;
+  border-radius: 50px;
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(181, 164, 37, 0.3);
+}
+
+.ctaButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(181, 164, 37, 0.4);
+}

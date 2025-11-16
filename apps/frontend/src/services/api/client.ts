@@ -11,7 +11,7 @@
 import axios, { type AxiosInstance, type InternalAxiosRequestConfig, AxiosError } from 'axios';
 import { env } from 'src/config/env';
 import { ROUTES } from 'src/constants/routes';
-import { tokenManager } from 'src/helpers/storage/tokenManager';
+import { tokenManager } from 'src/helpers/tokenManager';
 
 let isRefreshing = false;
 let failedQueue: Array<{
@@ -49,7 +49,7 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (res) => {
     if (env.IS_DEVELOPMENT) {
-      console.warn('✅ API Response', res.status, res.config.url, res.data);
+      console.warn('API Response', res.status, res.config.url, res.data);
     }
     return res;
   },

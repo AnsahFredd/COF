@@ -1,7 +1,7 @@
 // src/features/authentication/authApi.ts
 import { api } from 'src/services/api/api';
 import { API_ENDPOINTS } from 'src/services/api/endpoints';
-import { tokenManager } from 'src/helpers/storage/tokenManager';
+import { tokenManager } from 'src/helpers/tokenManager';
 import { ROUTES } from 'src/constants/routes';
 import type {
   LoginCredentials,

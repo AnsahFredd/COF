@@ -1,0 +1,182 @@
+.wrapper {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ffffff 0%, #fefdfb 40%, #faf8f5 100%);
+  padding: 4rem 1rem;
+}
+
+/* Header Section */
+.headerSection {
+  text-align: center;
+  margin-bottom: 4rem;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.mainTitle {
+  font-family: 'Cormorant Garamond', 'Libre Bodoni', Georgia, serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-bottom: 1.5rem;
+}
+
+.mainSubtitle {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-size: 1.375rem;
+  color: #333333;
+  line-height: 1.7;
+}
+
+/* Content Grid */
+.contentGrid {
+  margin-bottom: 4rem;
+}
+
+.contentCard {
+  background: white;
+  padding: 3rem 2rem;
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 1px solid #f5f1e8;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.contentCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255, 215, 0, 0.15);
+  border-color: #ffd700;
+}
+
+.iconBox {
+  background: linear-gradient(135deg, #ffd700 0%, #ffc107 100%);
+  width: 80px;
+  height: 80px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  margin-bottom: 1.5rem;
+}
+
+.cardTitle {
+  font-family: 'Cormorant Garamond', 'Libre Bodoni', Georgia, serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a0a0a;
+  margin-bottom: 1rem;
+}
+
+.cardText {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-size: 1.0625rem;
+  color: #666666;
+  line-height: 1.7;
+}
+
+.valuesList {
+  width: 100%;
+  margin-top: 1rem;
+}
+
+.valueIcon {
+  color: #ffd700;
+}
+
+/* Bottom CTA */
+.bottomCta {
+  background: white;
+  padding: 4rem 3rem;
+  text-align: center;
+  border: 2px solid #fff9e8;
+}
+
+.bottomTitle {
+  font-family: 'Cormorant Garamond', 'Libre Bodoni', Georgia, serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: #0a0a0a;
+}
+
+.bottomSubtitle {
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-size: 1.25rem;
+  color: #333333;
+  max-width: 42rem;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.buttonGroup {
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.primaryButton {
+  background: #b8a62e;
+  color: white;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  border: none;
+}
+
+.primaryButton:hover {
+  transform: translateY(-2px);
+  background: #b8a62ead;
+}
+
+.secondaryButton {
+  background: transparent;
+  border: 2px solid #ffd700;
+  color: #e6a800;
+  font-family: 'Poppins', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.secondaryButton:hover {
+  background: #fffef8;
+  border-color: #ffc107;
+  color: #cc9000;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+
+  .mainSubtitle {
+    font-size: 1.125rem;
+  }
+
+  .cardTitle {
+    font-size: 1.75rem;
+  }
+
+  .cardText {
+    font-size: 1rem;
+  }
+
+  .bottomTitle {
+    font-size: 2rem;
+  }
+
+  .bottomSubtitle {
+    font-size: 1rem;
+  }
+
+  .contentCard {
+    padding: 2rem 1.5rem;
+  }
+
+  .bottomCta {
+    padding: 2.5rem 2rem;
+  }
+}
