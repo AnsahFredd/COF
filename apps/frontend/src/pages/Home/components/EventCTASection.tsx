@@ -1,17 +1,12 @@
 import { Container, Button, Paper, Text, Group, Stack, Title, SimpleGrid } from '@mantine/core';
-import {
-  IconCalendar,
-  IconMail,
-  IconHeart,
-  IconAward,
-  IconUsers,
-  IconSparkles,
-  IconTarget,
-  IconEye,
-} from '@tabler/icons-react';
+import { IconCalendar, IconMail } from '@tabler/icons-react';
 import styles from './EventCTA.module.css';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from 'src/constants/routes';
 
 export const EventCTASection = () => {
+  const navigate = useNavigate();
+
   return (
     <div className={styles.wrapper}>
       <Container size="xl">
@@ -26,16 +21,14 @@ export const EventCTASection = () => {
           </Text>
         </div>
 
-        {/* Mission, Vision & Values Grid */}
         <SimpleGrid cols={{ base: 1, md: 3 }} spacing="xl" className={styles.contentGrid}>
-          {/* Mission */}
-          <Paper className={styles.contentCard} radius="xl" shadow="md">
-            <div className={styles.iconBox}>
-              <IconTarget size={32} />
+          <Paper className={styles.contentCard} radius="lg">
+            <div className={styles.cardHeader}>
+              <div className={styles.cardNumber}>01</div>
+              <Title order={2} className={styles.cardTitle}>
+                Our Mission
+              </Title>
             </div>
-            <Title order={2} className={styles.cardTitle}>
-              Our Mission
-            </Title>
             <Text className={styles.cardText}>
               To create extraordinary events that exceed expectations and leave lasting impressions.
               We're dedicated to transforming your vision into reality through meticulous planning,
@@ -43,14 +36,13 @@ export const EventCTASection = () => {
             </Text>
           </Paper>
 
-          {/* Vision */}
-          <Paper className={styles.contentCard} radius="xl" shadow="md">
-            <div className={styles.iconBox}>
-              <IconEye size={32} />
+          <Paper className={styles.contentCard} radius="lg">
+            <div className={styles.cardHeader}>
+              <div className={styles.cardNumber}>02</div>
+              <Title order={2} className={styles.cardTitle}>
+                Our Vision
+              </Title>
             </div>
-            <Title order={2} className={styles.cardTitle}>
-              Our Vision
-            </Title>
             <Text className={styles.cardText}>
               To be recognized as the premier event planning company that sets the standard for
               creativity, excellence, and client satisfaction. We envision a world where every
@@ -58,45 +50,35 @@ export const EventCTASection = () => {
             </Text>
           </Paper>
 
-          {/* Core Values Preview */}
-          <Paper className={styles.contentCard} radius="xl" shadow="md">
-            <div className={styles.iconBox}>
-              <IconHeart size={32} />
+          <Paper className={styles.contentCard} radius="lg">
+            <div className={styles.cardHeader}>
+              <div className={styles.cardNumber}>03</div>
+              <Title order={2} className={styles.cardTitle}>
+                Core Values
+              </Title>
             </div>
-            <Title order={2} className={styles.cardTitle}>
-              Core Values
-            </Title>
-            <Stack gap="sm" className={styles.valuesList}>
-              <Group gap="xs">
-                <IconSparkles size={18} className={styles.valueIcon} />
-                <Text size="sm" fw={600}>
-                  Passion & Excellence
-                </Text>
-              </Group>
-              <Group gap="xs">
-                <IconUsers size={18} className={styles.valueIcon} />
-                <Text size="sm" fw={600}>
-                  Client-Focused
-                </Text>
-              </Group>
-              <Group gap="xs">
-                <IconSparkles size={18} className={styles.valueIcon} />
-                <Text size="sm" fw={600}>
-                  Creativity & Innovation
-                </Text>
-              </Group>
-              <Group gap="xs">
-                <IconAward size={18} className={styles.valueIcon} />
-                <Text size="sm" fw={600}>
-                  Integrity & Trust
-                </Text>
-              </Group>
+            <Stack gap="md" className={styles.valuesList}>
+              <div className={styles.valueItem}>
+                <div className={styles.valueDot} />
+                <Text className={styles.valueText}>Passion & Excellence</Text>
+              </div>
+              <div className={styles.valueItem}>
+                <div className={styles.valueDot} />
+                <Text className={styles.valueText}>Client-Focused Approach</Text>
+              </div>
+              <div className={styles.valueItem}>
+                <div className={styles.valueDot} />
+                <Text className={styles.valueText}>Creativity & Innovation</Text>
+              </div>
+              <div className={styles.valueItem}>
+                <div className={styles.valueDot} />
+                <Text className={styles.valueText}>Integrity & Trust</Text>
+              </div>
             </Stack>
           </Paper>
         </SimpleGrid>
 
-        {/* Bottom CTA */}
-        <Paper className={styles.bottomCta} radius="xl" shadow="lg">
+        <Paper className={styles.bottomCta} radius="lg">
           <Stack align="center" gap="lg">
             <Title order={2} className={styles.bottomTitle}>
               Ready to Start Planning?
@@ -107,18 +89,20 @@ export const EventCTASection = () => {
             </Text>
             <Group gap="md" className={styles.buttonGroup}>
               <Button
-                size="xl"
-                radius="xl"
+                size="lg"
+                radius="md"
                 className={styles.primaryButton}
+                onClick={() => navigate(ROUTES.CONTACT)}
                 leftSection={<IconCalendar size={20} />}
               >
                 Book Your Event
               </Button>
               <Button
-                size="xl"
-                radius="xl"
+                size="lg"
+                radius="md"
                 variant="outline"
                 className={styles.secondaryButton}
+                onClick={() => navigate(ROUTES.CONTACT)}
                 leftSection={<IconMail size={20} />}
               >
                 Get a Quote

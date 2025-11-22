@@ -1,42 +1,27 @@
-import React from 'react';
-import { Box } from '@mantine/core';
+import { Group, Box } from '@mantine/core';
 import { IndicatorDotsProps } from '../interface';
 
-export const IndicatorDots: React.FC<IndicatorDotsProps> = ({
-  total,
-  currentIndex,
-  onDotClick,
-}) => {
+export const IndicatorDots: React.FC<IndicatorDotsProps> = ({ total, current, onChange }) => {
   return (
-    <Box
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        gap: '0 5rem',
-        marginTop: '1,5rem',
-      }}
-    >
-      {Array.from({ length: total }).map((_, index) => (
+    <Group gap="xs">
+      {Array.from({ length: total }).map((_, idx) => (
         <Box
-          key={index}
+          key={idx}
+          onClick={() => onChange(idx)}
           style={{
-            width: currentIndex === index ? '2rem' : '0.5rem',
-            height: '0.25rem',
-            backgroundColor: currentIndex === index ? '#a38e13' : '#9ca3af',
+            width: idx === current ? 32 : 8,
+            height: 8,
+            borderRadius: 4,
+            backgroundColor:
+              idx === current ? 'var(--mantine-color-gold-5)' : 'var(--mantine-color-gray-3)',
             cursor: 'pointer',
             transition: 'all 0.3s ease',
           }}
-          onClick={() => onDotClick(index)}
           role="button"
-          aria-label={`Go to testimonial ${index + 1}`}
+          aria-label={`Go to testimonial ${idx + 1}`}
           tabIndex={0}
-          onKeyDown={(e) => {
-            if (e.key === 'Enter' || e.key === ' ') {
-              onDotClick(index);
-            }
-          }}
         />
       ))}
-    </Box>
+    </Group>
   );
 };

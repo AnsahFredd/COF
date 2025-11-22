@@ -70,7 +70,12 @@ const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
 
           {/* Bottom info */}
           <Box className={classes.videoInfo}>
-            <Text className={classes.videoTitle} style={{ fontFamily: theme.other.scriptFont }}>
+            <Text
+              className={classes.videoTitle}
+              style={{
+                fontFamily: theme.other.scriptFont,
+              }}
+            >
               {video.title}
             </Text>
             {video.description && (

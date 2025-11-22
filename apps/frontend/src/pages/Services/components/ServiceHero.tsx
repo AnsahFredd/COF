@@ -87,16 +87,26 @@ export default function ServicesHero() {
             <motion.div variants={itemVariants}>
               <Stack gap="md">
                 <motion.div
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ duration: 0.6 }}
+                  initial={{
+                    opacity: 0,
+                    scale: 0.8,
+                  }}
+                  animate={{
+                    opacity: 1,
+                    scale: 1,
+                  }}
+                  transition={{
+                    duration: 0.6,
+                  }}
                 >
                   <Text
                     size="sm"
                     fw={300}
                     c="rgb(217, 119, 6)"
                     tt="uppercase"
-                    style={{ letterSpacing: '0.1em' }}
+                    style={{
+                      letterSpacing: '0.1em',
+                    }}
                   >
                     Cofuel Events
                   </Text>
@@ -147,7 +157,10 @@ export default function ServicesHero() {
 
             <motion.div
               animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 2, repeat: Number.POSITIVE_INFINITY }}
+              transition={{
+                duration: 2,
+                repeat: Number.POSITIVE_INFINITY,
+              }}
               style={{ paddingTop: '2rem' }}
             >
               <svg

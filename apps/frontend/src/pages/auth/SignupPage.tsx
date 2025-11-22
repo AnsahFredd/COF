@@ -126,7 +126,9 @@ const SignupPage = () => {
                 </>
               }
               required
-              {...form.getInputProps('agreeToTerms', { type: 'checkbox' })}
+              {...form.getInputProps('agreeToTerms', {
+                type: 'checkbox',
+              })}
             />
 
             <Button

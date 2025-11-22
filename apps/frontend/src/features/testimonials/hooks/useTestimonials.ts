@@ -1,39 +1,47 @@
-import { useState, useEffect, useCallback } from 'react';
-import { Testimonial } from '../interface';
+import { useCallback, useEffect, useState } from 'react';
 
-interface UseTestimonialProps {
-  testimonials: Testimonial[];
+interface useTestimonialNavigationOptions {
+  autoPlay?: boolean;
+  autoPlayInterval?: number;
 }
 
-export const useTestimonials = ({ testimonials }: UseTestimonialProps) => {
-  const displayedTestimonials = testimonials.slice(0, 3);
+export const useTestimonialNavigation = (
+  totalItems: number,
+  options: useTestimonialNavigationOptions = {}
+) => {
+  const { autoPlay = false, autoPlayInterval = 5000 } = options;
   const [currentIndex, setCurrentIndex] = useState(0);
-  const total = displayedTestimonials.length;
+  const [isPaused, setIsPaused] = useState(false);
 
   const next = useCallback(() => {
-    setCurrentIndex((prev) => (prev + 1) % total);
-  }, [total]);
+    setCurrentIndex((prev) => (prev + 1) % totalItems);
+  }, [totalItems]);
 
-  const previous = useCallback(() => {
-    setCurrentIndex((prev) => (prev - 1 + total) % total);
-  }, [total]);
+  const prev = useCallback(() => {
+    setCurrentIndex((prev) => (prev - 1 + totalItems) % totalItems);
+  }, [totalItems]);
 
-  const goToIndex = useCallback((index: number) => {
+  const goTo = useCallback((index: number) => {
     setCurrentIndex(index);
   }, []);
 
+  const pause = useCallback(() => setIsPaused(true), []);
+  const resume = useCallback(() => setIsPaused(false), []);
+
   useEffect(() => {
-    const timer = setInterval(next, 10000);
-    return () => clearInterval(timer);
-  }, [next]);
+    if (!autoPlay || isPaused) return;
+
+    const intervalId = setInterval(next, autoPlayInterval);
+
+    return () => clearInterval(intervalId);
+  }, [autoPlay, autoPlayInterval, isPaused, next]);
 
   return {
-    currentTestimonial: displayedTestimonials[currentIndex],
     currentIndex,
-    total,
-    displayedTestimonials,
     next,
-    previous,
-    goToIndex,
+    prev,
+    goTo,
+    pause,
+    resume,
   };
 };

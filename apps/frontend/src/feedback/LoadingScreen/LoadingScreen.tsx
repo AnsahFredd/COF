@@ -15,7 +15,12 @@ const LoadingScreen = () => {
       }}
     >
       <Box
-        style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '1.5rem' }}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '1.5rem',
+        }}
       >
         {/* Glowing rotating ring */}
         <Box pos="relative" w={80} h={80}>

@@ -1,4 +1,4 @@
-// import TestimonialSection from "src/features/testimonials/Testimonilas";
+import TestimonialSection from 'src/features/testimonials/Testimonilas';
 import HeroSection from './components/HeroSection';
 import ServicesSection from './components/ServicesSection';
 import VideoShowcase from './components/VideoShowcase';
@@ -10,7 +10,7 @@ const HomePage = () => {
       <HeroSection />
       <ServicesSection />
       <VideoShowcase />
-      {/* <TestimonialSection /> */}
+      <TestimonialSection displayCount={3} autoPlay={true} autoPlayInterval={5000} />
       <EventCTASection />
     </div>
   );
