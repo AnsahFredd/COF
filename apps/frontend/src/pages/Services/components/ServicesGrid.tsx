@@ -2,10 +2,12 @@ import { useState } from 'react';
 import { easeOut, motion } from 'framer-motion';
 import { Box, Container, SimpleGrid, Title, Text, Button, Stack, Image } from '@mantine/core';
 import servicesData from '../constants/servicesData';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { ROUTES } from 'src/constants/routes';
 
 export default function ServicesGrid() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const navigate = useNavigate();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -51,7 +53,10 @@ export default function ServicesGrid() {
                 <Box
                   pos="relative"
                   h={384}
-                  style={{ overflow: 'hidden', borderRadius: '8px' }}
+                  style={{
+                    overflow: 'hidden',
+                    borderRadius: '8px',
+                  }}
                   bg="gray.9"
                 >
                   {/* Background Image */}
@@ -59,8 +64,14 @@ export default function ServicesGrid() {
                     animate={{
                       scale: hoveredIndex === index ? 1.05 : 1,
                     }}
-                    transition={{ duration: 0.6, ease: 'easeOut' }}
-                    style={{ width: '100%', height: '100%' }}
+                    transition={{
+                      duration: 0.6,
+                      ease: 'easeOut',
+                    }}
+                    style={{
+                      width: '100%',
+                      height: '100%',
+                    }}
                   >
                     <Image
                       src={service.mainimage}
@@ -81,7 +92,9 @@ export default function ServicesGrid() {
                     animate={{
                       opacity: hoveredIndex === index ? 0.8 : 0.6,
                     }}
-                    transition={{ duration: 0.4 }}
+                    transition={{
+                      duration: 0.4,
+                    }}
                   />
 
                   {/* Content */}
@@ -100,7 +113,9 @@ export default function ServicesGrid() {
                       animate={{
                         y: hoveredIndex === index ? -8 : 0,
                       }}
-                      transition={{ duration: 0.4 }}
+                      transition={{
+                        duration: 0.4,
+                      }}
                     >
                       <Title
                         order={3}
@@ -108,7 +123,9 @@ export default function ServicesGrid() {
                         fw={300}
                         c="white"
                         mb="sm"
-                        style={{ letterSpacing: '-0.025em' }}
+                        style={{
+                          letterSpacing: '-0.025em',
+                        }}
                       >
                         {service.title}
                       </Title>
@@ -119,13 +136,20 @@ export default function ServicesGrid() {
                     </motion.div>
 
                     <motion.div
-                      initial={{ opacity: 0, y: 10 }}
+                      initial={{
+                        opacity: 0,
+                        y: 10,
+                      }}
                       animate={{
                         opacity: hoveredIndex === index ? 1 : 0,
                         y: hoveredIndex === index ? 0 : 10,
                       }}
-                      transition={{ duration: 0.3 }}
-                      style={{ marginTop: '1.5rem' }}
+                      transition={{
+                        duration: 0.3,
+                      }}
+                      style={{
+                        marginTop: '1.5rem',
+                      }}
                     >
                       <Button
                         component={Link}
@@ -154,7 +178,9 @@ export default function ServicesGrid() {
                 </Box>
 
                 <motion.div
-                  style={{ marginTop: '1.5rem' }}
+                  style={{
+                    marginTop: '1.5rem',
+                  }}
                   animate={{
                     opacity: hoveredIndex === index ? 1 : 0.7,
                   }}
@@ -199,6 +225,7 @@ export default function ServicesGrid() {
                 fw={300}
                 mt="lg"
                 px="xl"
+                onClick={() => navigate(ROUTES.CONTACT)}
                 style={{
                   letterSpacing: '0.05em',
                 }}

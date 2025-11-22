@@ -16,12 +16,14 @@ export const useContactForm = () => {
         message: "Thanks for reaching out! We'll get back to you soon.",
         color: 'green',
       });
+      return true;
     } catch (error) {
       showNotification({
         title: 'Submission Failed',
         message: 'There was an issue sending your message. Try again later.',
         color: 'red',
       });
+      return false;
     } finally {
       setIsSubmitting(false);
     }

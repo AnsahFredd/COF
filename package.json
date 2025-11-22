@@ -29,7 +29,7 @@
     "test:frontend": "npm run test --workspace=apps/frontend",
     "test:backend": "npm run test --workspace=apps/backend",
     "clean": "npm run clean --workspaces --if-present && rm -rf node_modules",
-    "prepare": "if [ -z \"$CI\" ]; then husky install; fi"
+    "prepare": "husky install || true"
   },
   "devDependencies": {
     "@types/jest": "^30.0.0",

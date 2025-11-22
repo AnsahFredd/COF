@@ -58,7 +58,12 @@ const ResetPasswordPage = () => {
                   backgroundColor: 'var(--mantine-color-red-0)',
                 }}
               >
-                <IconAlertCircle size={40} style={{ color: 'var(--mantine-color-red-6)' }} />
+                <IconAlertCircle
+                  size={40}
+                  style={{
+                    color: 'var(--mantine-color-red-6)',
+                  }}
+                />
               </Center>
 
               <Stack gap="xs" align="center">
@@ -101,7 +106,12 @@ const ResetPasswordPage = () => {
                   backgroundColor: 'var(--mantine-color-green-0)',
                 }}
               >
-                <IconCheck size={40} style={{ color: 'var(--mantine-color-green-6)' }} />
+                <IconCheck
+                  size={40}
+                  style={{
+                    color: 'var(--mantine-color-green-6)',
+                  }}
+                />
               </Center>
 
               <Stack gap="xs" align="center">

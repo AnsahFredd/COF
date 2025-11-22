@@ -60,7 +60,12 @@ const ForgotPasswordPage = () => {
                   backgroundColor: 'var(--mantine-color-green-0)',
                 }}
               >
-                <IconMail size={40} style={{ color: 'var(--mantine-color-green-6)' }} />
+                <IconMail
+                  size={40}
+                  style={{
+                    color: 'var(--mantine-color-green-6)',
+                  }}
+                />
               </Center>
 
               <Stack gap="xs" align="center">

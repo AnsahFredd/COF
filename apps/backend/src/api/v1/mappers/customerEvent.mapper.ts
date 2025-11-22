@@ -1,0 +1,1 @@
+// Convert DB event entities to API friendly payloads\nexport const toPublicEvent = (event: any) => ({\n  id: event.id,\n  title: event.title,\n  location: event.location,\n  startDate: event.startDate,\n  endDate: event.endDate,\n});\n

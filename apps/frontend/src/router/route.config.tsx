@@ -21,6 +21,7 @@ const ServicePage = lazy(() => import('src/pages/Services/ServicePage'));
 const ServiceDetail = lazy(() => import('src/pages/Services/ServiceDetail'));
 const ContactPage = lazy(() => import('src/pages/contact/ContactPage'));
 const PortfolioPage = lazy(() => import('src/pages/portfolio/PortfolioPage'));
+const AboutPage = lazy(() => import('src/pages/about/AboutPage'));
 
 const LoginPage = lazy(() => import('src/pages/auth/LoginPage'));
 const SignupPage = lazy(() => import('src/pages/auth/SignupPage'));
@@ -44,6 +45,7 @@ export const appRoutes: AppRoute[] = [
   { path: ROUTES.SERVICE_DETAILS, element: <ServiceDetail /> },
   { path: ROUTES.CONTACT, element: <ContactPage /> },
   { path: ROUTES.PORTFOLIO, element: <PortfolioPage /> },
+  { path: ROUTES.ABOUT, element: <AboutPage /> },
 
   // Auth Routes
   { path: ROUTES.LOGIN, element: <LoginPage /> },

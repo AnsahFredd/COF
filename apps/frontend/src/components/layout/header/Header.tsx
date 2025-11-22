@@ -23,7 +23,7 @@ export const Header = () => {
   }, [isMobile, opened]);
 
   return (
-    <>
+    <div className={classes.headerWrapper}>
       <Container className={classes.container}>
         {/* Logo */}
         <Link to="/" className={classes.logo}>
@@ -34,7 +34,14 @@ export const Header = () => {
           <>
             <Group gap="xl" className={classes.navLinks}>
               {centerNavItems.map((link, i) => (
-                <Link key={i} to={link.href} style={{ textTransform: 'uppercase', fontSize: 14 }}>
+                <Link
+                  key={i}
+                  to={link.href}
+                  style={{
+                    textTransform: 'uppercase',
+                    fontSize: 14,
+                  }}
+                >
                   {link.label}
                 </Link>
               ))}
@@ -55,24 +62,17 @@ export const Header = () => {
         {isMobile && <Burger opened={opened} color="gold" onClick={toggle} />}
       </Container>
 
-      <Collapse in={opened}>
-        <Stack
-          gap="lg"
-          align="center"
-          style={{
-            background: 'white',
-            padding: '1.5rem 0',
-            borderBottom: '1px solid #ddd',
-            zIndex: 50,
-          }}
-        >
-          {NAVITEMS.map((link, i) => (
-            <Link key={i} to={link.href} onClick={closeMenu} className={classes.mobileNavLink}>
-              {link.label}
-            </Link>
-          ))}
-        </Stack>
-      </Collapse>
-    </>
+      {isMobile && (
+        <Collapse in={opened}>
+          <Stack gap="lg" align="center" className={classes.mobileMenu}>
+            {NAVITEMS.map((link, i) => (
+              <Link key={i} to={link.href} onClick={closeMenu} className={classes.mobileNavLink}>
+                {link.label}
+              </Link>
+            ))}
+          </Stack>
+        </Collapse>
+      )}
+    </div>
   );
 };

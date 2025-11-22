@@ -3,9 +3,12 @@ import { Container, Title, Text, Box, Button, Image } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
 import { SERVICE_CATEGORIES } from '../constants/servicesection';
 import classes from './ServicesSection.module.css';
+import { useNavigate } from 'react-router-dom';
+import { ROUTES } from 'src/constants/routes';
 
 const ServicesSection = () => {
   const theme = useMantineTheme();
+  const navigate = useNavigate();
 
   return (
     <Box className={classes.servicesContainer}>
@@ -64,7 +67,6 @@ const ServicesSection = () => {
             ))}
           </Box>
 
-          {/* Divider between sections */}
           {categoryIndex < SERVICE_CATEGORIES.length - 1 && (
             <Box
               className={classes.divider}
@@ -80,7 +82,13 @@ const ServicesSection = () => {
 
       {/* Call to Action */}
       <Box className={classes.ctaSection}>
-        <Button size="lg" className={classes.ctaButton} color="gold" variant="filled">
+        <Button
+          size="lg"
+          className={classes.ctaButton}
+          color="gold"
+          variant="filled"
+          onClick={() => navigate(ROUTES.SERVICES)}
+        >
           View All Services
         </Button>
       </Box>

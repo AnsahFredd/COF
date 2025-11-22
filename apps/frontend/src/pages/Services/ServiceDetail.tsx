@@ -20,7 +20,12 @@ export default function ServiceDetail() {
   return (
     <Box w="100%" bg="var(--mantine-color-body)">
       <motion.section
-        style={{ position: 'relative', width: '100%', height: '384px', overflow: 'hidden' }}
+        style={{
+          position: 'relative',
+          width: '100%',
+          height: '384px',
+          overflow: 'hidden',
+        }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -82,7 +87,13 @@ export default function ServiceDetail() {
 
             <SimpleGrid cols={{ base: 1, md: 3 }} spacing="md" mt={64}>
               {service.images.map((img, idx) => (
-                <motion.div key={idx} whileHover={{ scale: 1.05 }} transition={{ duration: 0.4 }}>
+                <motion.div
+                  key={idx}
+                  whileHover={{ scale: 1.05 }}
+                  transition={{
+                    duration: 0.4,
+                  }}
+                >
                   <Image
                     src={img}
                     alt={`${service.title} ${idx + 1}`}

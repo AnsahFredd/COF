@@ -5,23 +5,31 @@
  */
 
 import { z } from 'zod';
-import { emailValidator, nameValidator, phoneValidator } from '../base';
+import { emailValidator, phoneValidator } from '../base';
 
 export const contactSchema = z.object({
-  firstName: nameValidator('First name'),
-  lastName: nameValidator('Last name'),
+  fullName: z
+    .string()
+    .min(2, 'Full name must be at least 2 characters')
+    .max(100, 'Full name must not exceed 100 characters')
+    .trim(),
   email: emailValidator,
-  phone: phoneValidator.optional(),
-  subject: z
+  phone: phoneValidator,
+  eventType: z.string().min(1, 'Please select an event type'),
+  eventDate: z
+    .date()
+    .nullable()
+    .refine((date) => date !== null, {
+      message: 'Event date is required',
+    }),
+  eventLocation: z
     .string()
-    .min(1, 'Subject is required')
-    .max(100, 'Subject must not exceed 100 characters')
+    .min(2, 'Event location is required')
+    .max(200, 'Event location must not exceed 200 characters')
     .trim(),
-  message: z
-    .string()
-    .min(10, 'Message must be at least 10 characters long')
-    .max(1000, 'Message must not excceed 1000 characters')
-    .trim(),
+  message: z.string().max(1000, 'Message must not exceed 1000 characters').trim().optional(),
+  budget: z.string().min(1, 'Budget is required').trim(),
+  preferredContactMethod: z.string().min(1, 'Please select a preferred contact method'),
 });
 
 export type ContactFormData = z.infer<typeof contactSchema>;
