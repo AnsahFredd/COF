@@ -21,24 +21,34 @@ import type {
 export const authApi = {
   // Login
   async login(credentials: LoginCredentials): Promise<LoginResponse> {
-    const response = await api.post<LoginResponse>(API_ENDPOINTS.AUTH.LOGIN, credentials);
+    // Backend returns {status: 'sucess', data: {user, token, refreshToken}}
+    const response = await api.post<{ status: string; data: LoginResponse }>(
+      API_ENDPOINTS.AUTH.LOGIN,
+      credentials
+    );
+    const loginData = response.data;
 
-    if (response.token && response.refreshToken) {
-      tokenManager.saveTokens(response.token, response.refreshToken);
+    if (loginData.token && loginData.refreshToken) {
+      tokenManager.saveTokens(loginData.token, loginData.refreshToken);
     }
 
-    return response;
+    return loginData;
   },
 
   // Signup
   async signup(credentials: SignupCredentials): Promise<SignupResponse> {
-    const response = await api.post<SignupResponse>(API_ENDPOINTS.AUTH.REGISTER, credentials);
+    // Backend returns {status: 'success', data: {user, token}}
+    const response = await api.post<{ status: string; data: SignupResponse }>(
+      API_ENDPOINTS.AUTH.REGISTER,
+      credentials
+    );
+    const signupData = response.data;
 
-    if (response.token && response.refreshToken) {
-      tokenManager.saveTokens(response.token, response.refreshToken);
+    if (signupData.token && signupData.refreshToken) {
+      tokenManager.saveTokens(signupData.token, signupData.refreshToken);
     }
 
-    return response;
+    return signupData;
   },
 
   // Logout
@@ -53,7 +63,9 @@ export const authApi = {
 
   // Get current user
   async getCurrentUser(): Promise<User> {
-    return api.get<User>(API_ENDPOINTS.AUTH.ME);
+    // Backend returns {success: true, data: user}
+    const response = await api.get<{ success: boolean; data: User }>(API_ENDPOINTS.AUTH.ME);
+    return response.data;
   },
 
   // Forgot password

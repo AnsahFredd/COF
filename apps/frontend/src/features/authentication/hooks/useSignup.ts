@@ -27,7 +27,8 @@ export const useSignup = () => {
         queryClient.invalidateQueries({ queryKey: queryKeys.auth.me });
       }
 
-      navigate(ROUTES.DASHBOARD);
+      // Redirect to home (no user dashboard yet)
+      navigate(ROUTES.HOME);
     },
   });
 

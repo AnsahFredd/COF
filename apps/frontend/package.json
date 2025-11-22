@@ -33,7 +33,9 @@
     "@mantine/spotlight": "^7.17.8",
     "@tabler/icons-react": "^2.44.0",
     "@tanstack/react-query": "^5.90.5",
+    "@tanstack/react-table": "^8.21.3",
     "@types/node": "^24.10.1",
+    "@types/recharts": "^1.8.29",
     "axios": "^1.6.5",
     "dayjs": "^1.11.10",
     "framer-motion": "^12.23.24",
@@ -45,6 +47,8 @@
     "react-icons": "^5.5.0",
     "react-masonry-css": "^1.0.16",
     "react-router-dom": "^6.21.3",
+    "recharts": "^3.5.0",
+    "xlsx": "^0.18.5",
     "yet-another-react-lightbox": "^3.25.0",
     "zod": "^4.1.12",
     "zustand": "^4.4.7"

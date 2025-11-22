@@ -60,7 +60,7 @@ export const authService = {
       throw new AppError('Invalid email or password', 401);
     }
 
-    // 3. Issue JWT
+    // 3. Generate access token (1 day)
     const token = jwt.sign(
       {
         id: user.id,
@@ -70,7 +70,23 @@ export const authService = {
       { expiresIn: config.jwtExpiresIn || '1d' } as SignOptions
     );
 
-    // 4. Return safe user object + token
+    // 4. Generate refresh token (7 days)
+    const refreshToken = jwt.sign(
+      {
+        id: user.id,
+        type: 'refresh',
+      },
+      config.jwtSecret,
+      { expiresIn: '7d' } as SignOptions
+    );
+
+    // 5. Store refresh token in database
+    await prisma.user.update({
+      where: { id: user.id },
+      data: { refreshToken },
+    });
+
+    // 6. Return safe user object + tokens
     return {
       user: {
         id: user.id,
@@ -80,6 +96,7 @@ export const authService = {
         role: user.role,
       },
       token,
+      refreshToken,
     };
   },
 };

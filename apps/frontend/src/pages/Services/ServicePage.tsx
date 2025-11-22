@@ -1,13 +1,13 @@
 'use client';
 import ServicesHero from './components/ServiceHero';
 import ServicesGrid from './components/ServicesGrid';
+import styles from './services.module.css';
 
 export default function Services() {
   return (
-    <div className="w-full bg-background">
+    <div className={styles.pageWrapper}>
       <ServicesHero />
       <ServicesGrid />
     </div>
   );
 }
-// Problems loading reference 'https://www.schemastore.org/package.json': Unable to load schema from 'https://www.schemastore.org/package.json': getaddrinfo ENOTFOUND www.schemastore.org.(768)

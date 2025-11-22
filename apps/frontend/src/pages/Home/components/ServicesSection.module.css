@@ -36,26 +36,6 @@
   grid-template-columns: repeat(5, 1fr);
 }
 
-/* Responsive breakpoints */
-@media (max-width: 1400px) {
-  .mainServicesGrid {
-    grid-template-columns: repeat(5, 1fr);
-  }
-}
-
-@media (max-width: 992px) {
-  .mainServicesGrid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 640px) {
-  .servicesGrid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-}
-
 .serviceCard {
   position: relative;
   height: 450px;
@@ -162,4 +142,37 @@
 .ctaButton:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(181, 164, 37, 0.4);
+}
+
+/* Responsive breakpoints */
+@media (max-width: 1400px) {
+  .mainServicesGrid {
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+@media (max-width: 992px) {
+  .mainServicesGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .servicesGrid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+    width: 100%;
+    padding: 2px;
+  }
+  .mainTitle {
+    font-size: clamp(1rem, 3vw, 3.5rem);
+    margin-bottom: 12px;
+    color: #2c2c2c;
+    line-height: 1.1;
+  }
+  .ctaButton {
+    width: 300px;
+    font-size: 1rem;
+    padding: 8px 24px;
+  }
 }

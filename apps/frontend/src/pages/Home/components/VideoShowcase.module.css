@@ -232,6 +232,20 @@
     grid-column: span 1 !important;
     grid-row: span 1 !important;
   }
+  .sectionTitle {
+    font-size: clamp(0.8rem, 3vw, 2.5rem);
+    margin-bottom: 22px;
+    font-weight: 500;
+  }
+  .sectionDescription {
+    font-size: clamp(0.8rem, 0.5vw, 1.1rem);
+    line-height: 2;
+  }
+  .ctaButton {
+    font-size: 1rem;
+    padding: 8px 24px;
+    font-weight: 500;
+  }
 }
 
 @media (max-width: 1200px) {
@@ -243,7 +257,11 @@
 @media (max-width: 768px) {
   .videosGrid {
     grid-template-columns: 1fr;
-    padding: 0 20px;
-    gap: 12px;
+    padding: 0 10px;
+    gap: 28px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 40px;
+    grid-auto-rows: 600px;
   }
 }

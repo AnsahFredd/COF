@@ -4,6 +4,7 @@ generator client {
 
 datasource db {
   provider = "mongodb"
+  url      = env("DATABASE_URL")
 }
 
 model User {
@@ -22,10 +23,18 @@ model User {
   refreshToken           String?
   bookings               Booking[]
   customerEvents         CustomerEvent[]
+  notifications          Notification[]
+  notificationPreferences NotificationPreferences?
   createdAt              DateTime        @default(now())
   updatedAt              DateTime        @updatedAt
-
+  
   @@map("users")
+}
+
+type NotificationPreferences {
+  email    Boolean @default(true)
+  push     Boolean @default(true)
+  marketing Boolean @default(false)
 }
 
 model CustomerEvent {
@@ -38,12 +47,14 @@ model CustomerEvent {
   eventLocation          String
   message                String?
   budget                 String
+  guestCount             Int?
   preferredContactMethod ContactMethod
   status                 CustomerEventStatus @default(NEW)
   user                   User?               @relation(fields: [userId], references: [id])
   userId                 String?             @db.ObjectId
   assignedTo             String?
   notes                  String?
+  bookings               Booking[]
   createdAt              DateTime            @default(now())
   updatedAt              DateTime            @updatedAt
 
@@ -60,11 +71,25 @@ model Booking {
   budget          String?
   message         String?
   status          BookingStatus @default(PENDING)
-  customerEventId String?       @db.ObjectId
+  customerEvent   CustomerEvent? @relation(fields: [customerEventId], references: [id])
+  customerEventId String?        @db.ObjectId
   createdAt       DateTime      @default(now())
   updatedAt       DateTime      @updatedAt
 
   @@map("bookings")
+}
+
+model Notification {
+  id String @id @default(auto()) @map("_id") @db.ObjectId
+  user User @relation(fields: [userId], references: [id])
+  userId String @db.ObjectId
+  title String
+  message String
+  isRead Boolean @default(false)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+ 
+  @@map("notifications")
 }
 
 enum Role {
@@ -106,4 +131,16 @@ enum BookingStatus {
   IN_PROGRESS
   COMPLETED
   CANCELLED
+}
+
+model Portfolio {
+  id          String   @id @default(auto()) @map("_id") @db.ObjectId
+  title       String
+  description String?
+  imageUrl    String
+  category    String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  @@map("portfolio")
 }

@@ -3,6 +3,7 @@ module.exports = {
   env: {
     browser: true,
     es2022: true,
+    node: true,
   },
   extends: [
     'eslint:recommended',
@@ -42,5 +43,11 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/no-explicit-any': 'warn',
     'no-console': ['warn', { allow: ['warn', 'error'] }],
+
+    // Allow inline styles
+    'react/forbid-component-props': 'off',
+
+    // Allow className strings
+    'react/forbid-dom-props': 'off',
   },
 };

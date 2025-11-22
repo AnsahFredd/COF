@@ -13,11 +13,16 @@ export interface User {
   avatar?: string;
   role: UserRole;
   isEmailVerified: boolean;
+  notificationPreferences?: {
+    email: boolean;
+    push: boolean;
+    marketing: boolean;
+  };
   createdAt: string;
   updatedAt: string;
 }
 
-export type UserRole = 'user' | 'vendor' | 'admin';
+export type UserRole = 'USER' | 'ADMIN';
 
 // Auth State
 export interface AuthState {

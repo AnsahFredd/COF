@@ -1,0 +1,82 @@
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 19:20:09"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 19:20:09"}
+{"level":"info","message":"SIGTERM signal received: closing HTTP server","service":"events-backend","timestamp":"2025-11-23 19:55:49"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 20:47:52"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 20:47:52"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 20:48:15"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 20:48:15"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:00:44"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:00:44"}
+{"level":"info","message":"SIGTERM signal received: closing HTTP server","service":"events-backend","timestamp":"2025-11-23 21:02:08"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:02:14"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:02:14"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:03:46"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:03:46"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:03:48"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:03:48"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:06:54"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:06:54"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 21:11:01"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 21:11:01"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 22:26:45"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 22:26:45"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-23 22:33:11"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-23 22:33:11"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 01:48:11"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-24 01:48:11"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 01:50:28"}
+{"level":"info","message":"SIGTERM signal received: closing HTTP server","service":"events-backend","timestamp":"2025-11-24 01:50:58"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 01:51:06"}
+{"level":"info","message":"Server running on port 4000","service":"events-backend","timestamp":"2025-11-24 01:51:06"}
+{"level":"info","message":"SIGTERM signal received: closing HTTP server","service":"events-backend","timestamp":"2025-11-24 01:57:17"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 01:57:25"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 01:57:25"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:06:59"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:06:59"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:33:47"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:33:47"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:33:47"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:34:28"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:34:28"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:34:28"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:37:45"}
+{"clientVersion":"5.22.0","level":"error","message":"Database connection failed! Error in connector: Error creating a database connection. (Kind: An error occurred during DNS resolution: proto error: io error: A socket operation was attempted to an unreachable network. (os error 10051), labels: {})","name":"PrismaClientInitializationError","service":"events-backend","stack":"PrismaClientInitializationError: Error in connector: Error creating a database connection. (Kind: An error occurred during DNS resolution: proto error: io error: A socket operation was attempted to an unreachable network. (os error 10051), labels: {})\n    at t (C:\\Users\\user\\OneDrive\\Desktop\\COF\\node_modules\\@prisma\\client\\runtime\\library.js:112:2488)\n    at connectToDB (C:\\Users\\user\\OneDrive\\Desktop\\COF\\apps\\backend\\src\\config\\database.ts:23:5)\n    at startServer (C:\\Users\\user\\OneDrive\\Desktop\\COF\\apps\\backend\\src\\main.ts:8:5)","timestamp":"2025-11-24 02:39:05"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:40:03"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:41:26"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:41:26"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:44:44"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:44:44"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:44:44"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:48:13"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:48:13"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:48:13"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:48:49"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:48:49"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:50:02"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 02:51:11"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 02:51:11"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 03:13:18"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 03:13:18"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 10:28:59"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 10:28:59"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 23:14:20"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 23:14:21"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 23:16:38"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 23:16:38"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 23:31:12"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 23:31:12"}
+{"level":"info","message":"SIGTERM signal received: closing HTTP server","service":"events-backend","timestamp":"2025-11-24 23:32:34"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-24 23:33:27"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-24 23:33:27"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-25 00:17:50"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-25 00:17:50"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-25 11:46:07"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-25 11:46:07"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-25 12:34:19"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-25 12:34:19"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-25 14:32:41"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-25 14:32:41"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-25 18:03:47"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-25 18:03:48"}
+{"level":"info","message":"Database connected successfully","service":"events-backend","timestamp":"2025-11-26 09:50:35"}
+{"level":"info","message":"Server running on port 5000","service":"events-backend","timestamp":"2025-11-26 09:50:35"}

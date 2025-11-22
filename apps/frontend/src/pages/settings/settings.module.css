@@ -1,0 +1,86 @@
+.settingsPage {
+  width: 100%;
+  min-height: 100vh;
+  padding: var(--spacing-xl) 0;
+}
+
+.settingsContainer {
+  max-width: 1200px;
+}
+
+.settingsTitle {
+  font-size: var(--font-size-3xl);
+  margin-bottom: var(--spacing-lg);
+}
+
+.tabsList {
+  margin-bottom: var(--spacing-lg);
+}
+
+.settingsCard {
+  margin-bottom: var(--spacing-lg);
+}
+
+.sectionTitle {
+  font-size: var(--font-size-xl);
+  margin-bottom: var(--spacing-md);
+}
+
+.avatarSection {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-md);
+}
+
+.formGroup {
+  display: flex;
+  gap: var(--spacing-md);
+}
+
+.notificationItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-md) 0;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .settingsPage {
+    padding: var(--spacing-lg) 0;
+  }
+
+  .settingsTitle {
+    font-size: var(--font-size-2xl);
+  }
+
+  .formGroup {
+    flex-direction: column;
+  }
+
+  .avatarSection {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .settingsPage {
+    padding: var(--spacing-md) 0;
+  }
+
+  .settingsTitle {
+    font-size: var(--font-size-xl);
+  }
+
+  .sectionTitle {
+    font-size: var(--font-size-lg);
+  }
+
+  .notificationItem {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-sm);
+  }
+}

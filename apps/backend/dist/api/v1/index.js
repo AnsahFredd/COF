@@ -1,0 +1,20 @@
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_routes_1 = __importDefault(require("src/api/v1/routes/auth.routes"));
+const customerEvent_routes_1 = __importDefault(require("./routes/customerEvent.routes"));
+const booking_routes_1 = __importDefault(require("./routes/booking.routes"));
+const notification_routes_1 = __importDefault(require("./routes/notification.routes"));
+const user_routes_1 = __importDefault(require("./routes/user.routes"));
+const dashboard_routes_1 = __importDefault(require("./routes/dashboard.routes"));
+const router = (0, express_1.Router)();
+router.use('/auth', auth_routes_1.default);
+router.use('/customer-events', customerEvent_routes_1.default);
+router.use('/bookings', booking_routes_1.default);
+router.use('/notifications', notification_routes_1.default);
+router.use('/users', user_routes_1.default);
+router.use('/dashboard', dashboard_routes_1.default);
+exports.default = router;

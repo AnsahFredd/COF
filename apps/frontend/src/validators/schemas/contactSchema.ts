@@ -29,6 +29,11 @@ export const contactSchema = z.object({
     .trim(),
   message: z.string().max(1000, 'Message must not exceed 1000 characters').trim().optional(),
   budget: z.string().min(1, 'Budget is required').trim(),
+  guestCount: z
+    .number()
+    .int('Guest count must be a whole number')
+    .positive('Guest count must be at least 1')
+    .max(10000, 'Guest count seems unrealistic'),
   preferredContactMethod: z.string().min(1, 'Please select a preferred contact method'),
 });
 

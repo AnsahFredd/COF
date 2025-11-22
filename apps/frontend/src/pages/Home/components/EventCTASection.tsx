@@ -3,9 +3,12 @@ import { IconCalendar, IconMail } from '@tabler/icons-react';
 import styles from './EventCTA.module.css';
 import { useNavigate } from 'react-router-dom';
 import { ROUTES } from 'src/constants/routes';
+import { useState } from 'react';
+import { QuoteModal } from './QuoteModal';
 
 export const EventCTASection = () => {
   const navigate = useNavigate();
+  const [quoteModalOpened, setQuoteModalOpened] = useState(false);
 
   return (
     <div className={styles.wrapper}>
@@ -102,7 +105,7 @@ export const EventCTASection = () => {
                 radius="md"
                 variant="outline"
                 className={styles.secondaryButton}
-                onClick={() => navigate(ROUTES.CONTACT)}
+                onClick={() => setQuoteModalOpened(true)}
                 leftSection={<IconMail size={20} />}
               >
                 Get a Quote
@@ -111,6 +114,8 @@ export const EventCTASection = () => {
           </Stack>
         </Paper>
       </Container>
+
+      <QuoteModal opened={quoteModalOpened} onClose={() => setQuoteModalOpened(false)} />
     </div>
   );
 };

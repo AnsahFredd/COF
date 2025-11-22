@@ -10,13 +10,13 @@ import {
   Anchor,
   Stack,
   Alert,
-  Center,
 } from '@mantine/core';
 import { IconAlertCircle, IconMail } from '@tabler/icons-react';
 import { Link } from 'react-router-dom';
 import { useForgotPassword } from 'src/features/authentication';
 import { forgotPasswordSchema, type ForgotPasswordFormData } from 'src/validators';
 import { ROUTES } from 'src/constants/routes';
+import styles from './auth.module.css';
 
 const ForgotPasswordPage = () => {
   const { sendResetEmail, isLoading, isSuccess, error } = useForgotPassword();
@@ -40,33 +40,19 @@ const ForgotPasswordPage = () => {
   const isFormValid = form.values.email.trim() !== '';
 
   return (
-    <Center style={{ minHeight: '100vh' }}>
-      <Container size={460}>
+    <div className={styles.authContainer}>
+      <Container size={460} className={styles.authPaper}>
         <Paper withBorder shadow="md" p={40} radius="md">
-          <Title ta="center" fw={900} size="h1">
-            Forgot your password?
-          </Title>
-          <Text c="dimmed" size="sm" ta="center" mt={8} mb={30}>
+          <Title className={styles.authTitle}>Forgot your password?</Title>
+          <Text c="dimmed" size="sm" className={styles.authSubtext}>
             Enter your email to receive reset instructions
           </Text>
 
           {isSuccess ? (
             <Stack align="center" gap="lg">
-              <Center
-                style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--mantine-color-green-0)',
-                }}
-              >
-                <IconMail
-                  size={40}
-                  style={{
-                    color: 'var(--mantine-color-green-6)',
-                  }}
-                />
-              </Center>
+              <div className={`${styles.iconContainer} ${styles.iconContainerSuccess}`}>
+                <IconMail size={40} className={styles.iconSuccess} />
+              </div>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>
@@ -119,7 +105,7 @@ const ForgotPasswordPage = () => {
           )}
         </Paper>
       </Container>
-    </Center>
+    </div>
   );
 };
 

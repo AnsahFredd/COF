@@ -1,0 +1,62 @@
+.container {
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm {
+  width: 60px;
+  height: 60px;
+}
+
+.md {
+  width: 80px;
+  height: 80px;
+}
+
+.lg {
+  width: 100px;
+  height: 100px;
+}
+
+/* Variants */
+.success {
+  background-color: var(--mantine-color-green-0);
+  color: var(--mantine-color-green-6);
+}
+
+.error {
+  background-color: var(--mantine-color-red-0);
+  color: var(--mantine-color-red-6);
+}
+
+.warning {
+  background-color: var(--mantine-color-yellow-0);
+  color: var(--mantine-color-yellow-6);
+}
+
+.info {
+  background-color: var(--mantine-color-blue-0);
+  color: var(--mantine-color-blue-6);
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .sm {
+    width: 50px;
+    height: 50px;
+  }
+
+  .md {
+    width: 64px;
+    height: 64px;
+  }
+
+  .lg {
+    width: 80px;
+    height: 80px;
+  }
+}
