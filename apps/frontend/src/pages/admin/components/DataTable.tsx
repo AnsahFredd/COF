@@ -1,33 +1,27 @@
 import { LoadingOverlay, ActionIcon, Group, Table, ScrollArea, Text } from '@mantine/core';
 import { IconEye, IconEdit, IconTrash } from '@tabler/icons-react';
 
-interface DataTableProps {
+interface DataTableProps<T> {
   columns: {
     key: string;
     label: string;
-    render?: (row: any) => React.ReactNode;
+    render?: (row: T) => React.ReactNode;
   }[];
-  data: any[];
+  data: T[];
   loading: boolean;
-  onEdit?: (row: any) => void;
-  onDelete?: (row: any) => void;
-  onView?: (row: any) => void;
+  onEdit?: (row: T) => void;
+  onDelete?: (row: T) => void;
+  onView?: (row: T) => void;
 }
 
-interface DataTableProps {
-  columns: {
-    key: string;
-    label: string;
-    render?: (row: any) => React.ReactNode;
-  }[];
-  data: any[];
-  loading: boolean;
-  onEdit?: (row: any) => void;
-  onDelete?: (row: any) => void;
-  onView?: (row: any) => void;
-}
-
-export const DataTable = ({ columns, data, loading, onEdit, onDelete, onView }: DataTableProps) => {
+export const DataTable = <T extends { id: string | number }>({
+  columns,
+  data,
+  loading,
+  onEdit,
+  onDelete,
+  onView,
+}: DataTableProps<T>) => {
   return (
     <div style={{ position: 'relative', minHeight: 200 }}>
       <LoadingOverlay visible={loading} zIndex={1000} overlayProps={{ radius: 'sm', blur: 2 }} />
@@ -49,7 +43,11 @@ export const DataTable = ({ columns, data, loading, onEdit, onDelete, onView }: 
                 <Table.Tr key={row.id}>
                   {columns.map((col) => (
                     <Table.Td key={col.key}>
-                      {col.render ? col.render(row) : <Text size="sm">{row[col.key]}</Text>}
+                      {col.render ? (
+                        col.render(row)
+                      ) : (
+                        <Text size="sm">{(row as any)[col.key]}</Text>
+                      )}
                     </Table.Td>
                   ))}
                   <Table.Td>

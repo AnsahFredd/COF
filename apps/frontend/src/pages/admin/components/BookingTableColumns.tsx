@@ -5,6 +5,7 @@ import { formatDate, getStatusColor } from '../helpers';
 import { useUserHasPermission } from 'src/hooks/useUserHasPermission';
 import { Booking } from 'src/services/api/bookings';
 import { AdminPermission } from '../../../constants/permissions';
+import { STATUS_COLORS } from '../constants/admin';
 
 interface BookingTableColumnProps {
   onView: (booking: Booking) => void;
@@ -89,7 +90,10 @@ export const BookingTableColumns = ({
       header: 'Status',
       meta: { columnName: 'Status' },
       cell: ({ row }) => (
-        <Badge color={getStatusColor(row.original.status.toLowerCase() as any)} variant="light">
+        <Badge
+          color={getStatusColor(row.original.status.toLowerCase() as keyof typeof STATUS_COLORS)}
+          variant="light"
+        >
           {row.original.status}
         </Badge>
       ),

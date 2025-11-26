@@ -20,7 +20,7 @@ import {
   IconFilter,
   IconSearch,
 } from '@tabler/icons-react';
-import { Table } from '@tanstack/react-table';
+import { Table, Column } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 import { Booking } from 'src/services/api/bookings';
 import { exportBookings } from '../helpers/booking';
@@ -39,8 +39,8 @@ interface BookingHeaderProps {
   hasActiveFilters: boolean;
 }
 
-const getColumnLabel = (column: any): string => {
-  return column.columnDef.meta?.columnName || column.id;
+const getColumnLabel = (column: Column<Booking, unknown>): string => {
+  return (column.columnDef.meta as { columnName?: string })?.columnName || column.id;
 };
 
 export const BookingHeader = ({
@@ -59,9 +59,10 @@ export const BookingHeader = ({
   const [showColumns, setShowColumns] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
+  const rowSelection = table.getState().rowSelection;
   const showExportButton = useMemo(() => {
     return table.getSelectedRowModel().rows.length > 0;
-  }, [table, table?.getState().rowSelection]);
+  }, [table, rowSelection]);
 
   const handleShowColumns = () => {
     setShowColumns(!showColumns);

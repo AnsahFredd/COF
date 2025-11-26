@@ -20,7 +20,7 @@ import {
   IconSearch,
   IconFilter,
 } from '@tabler/icons-react';
-import { Table } from '@tanstack/react-table';
+import { Table, Column } from '@tanstack/react-table';
 import { useMemo, useState } from 'react';
 import { User } from 'src/services/api/users';
 import { exportUsers } from '../helpers/user';
@@ -38,8 +38,8 @@ interface UserHeaderProps {
   hasActiveFilters: boolean;
 }
 
-const getColumnLabel = (column: any): string => {
-  return column.columnDef.meta?.columnName || column.id;
+const getColumnLabel = (column: Column<User, unknown>): string => {
+  return (column.columnDef.meta as { columnName?: string })?.columnName || column.id;
 };
 
 export const UserHeader = ({

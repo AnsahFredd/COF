@@ -1,3 +1,5 @@
+/// <reference types="jest" />
+
 import { PortfolioService } from '../api/v1/services/portfolio.service';
 import { uploadFile, deleteFile } from '../libs/storage';
 import { PrismaClient } from '@prisma/client';
