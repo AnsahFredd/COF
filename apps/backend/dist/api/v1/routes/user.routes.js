@@ -2,14 +2,17 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 const express_1 = require("express");
 const user_controller_1 = require("../controllers/user.controller");
-const auth_middleware_1 = require("src/middlewares/auth.middleware");
-const userRouter = (0, express_1.Router)();
-// All user routes require authentication
-userRouter.use(auth_middleware_1.authenticate);
-userRouter.post('/', user_controller_1.userController.create);
-userRouter.get('/', user_controller_1.userController.getAll);
-userRouter.get('/:id', user_controller_1.userController.getById);
-userRouter.patch('/:id', user_controller_1.userController.update);
-userRouter.delete('/:id', user_controller_1.userController.delete);
-userRouter.post('/change-password', user_controller_1.userController.changePassword);
-exports.default = userRouter;
+const auth_middleware_1 = require("../../../middlewares/auth.middleware");
+const upload_middleware_1 = require("../../../middlewares/upload.middleware");
+const validation_middleware_1 = require("../../../middlewares/validation.middleware");
+const user_dto_1 = require("../dtos/user.dto");
+const router = (0, express_1.Router)();
+router.post('/', auth_middleware_1.authenticate, (0, auth_middleware_1.requireRole)('ADMIN'), (0, validation_middleware_1.validate)(user_dto_1.createUserSchema), user_controller_1.userController.create);
+router.get('/', auth_middleware_1.authenticate, (0, auth_middleware_1.requireRole)('ADMIN'), user_controller_1.userController.getAll);
+router.get('/me', auth_middleware_1.authenticate, user_controller_1.userController.getCurrentUser);
+router.get('/:id', auth_middleware_1.authenticate, user_controller_1.userController.getById);
+router.patch('/:id', auth_middleware_1.authenticate, (0, validation_middleware_1.validate)(user_dto_1.updateUserSchema), user_controller_1.userController.update);
+router.delete('/:id', auth_middleware_1.authenticate, (0, auth_middleware_1.requireRole)('ADMIN'), user_controller_1.userController.delete);
+router.post('/change-password', auth_middleware_1.authenticate, (0, validation_middleware_1.validate)(user_dto_1.changePasswordSchema), user_controller_1.userController.changePassword);
+router.post('/:id/avatar', auth_middleware_1.authenticate, upload_middleware_1.upload.single('avatar'), user_controller_1.userController.uploadAvatar);
+exports.default = router;

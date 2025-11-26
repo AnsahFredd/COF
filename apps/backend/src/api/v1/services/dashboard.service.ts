@@ -101,7 +101,7 @@ export const dashboardService = {
       date.setDate(date.getDate() - i);
       const dayName = date.toLocaleDateString('en-US', { weekday: 'short' });
 
-      const dayBookings = bookings.filter((b) => {
+      const dayBookings = bookings.filter((b: { createdAt: Date }) => {
         const bookingDate = new Date(b.createdAt);
         return bookingDate.toDateString() === date.toDateString();
       });

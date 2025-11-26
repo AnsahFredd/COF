@@ -19,10 +19,13 @@ exports.bookingController = {
     getAll: async (req, res, next) => {
         try {
             const userId = typeof req.query.userId === 'string' ? req.query.userId : undefined;
-            const result = await booking_service_1.bookingService.getAllBookings(userId);
+            const cursor = typeof req.query.cursor === 'string' ? req.query.cursor : undefined;
+            const limit = typeof req.query.limit === 'string' ? parseInt(req.query.limit, 10) : 10;
+            const result = await booking_service_1.bookingService.getAllBookings({ userId, cursor, limit });
             return res.status(200).json({
                 success: true,
-                data: result,
+                data: result.data,
+                meta: result.meta,
             });
         }
         catch (error) {
