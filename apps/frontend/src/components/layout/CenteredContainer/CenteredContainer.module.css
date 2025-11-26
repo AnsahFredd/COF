@@ -1,0 +1,21 @@
+.container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--spacing-md);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .container {
+    padding: var(--spacing-sm);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-xs);
+  }
+}

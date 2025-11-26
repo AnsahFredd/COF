@@ -8,7 +8,7 @@
     "strict": true,
     "skipLibCheck": true,
     "resolveJsonModule": true,
-    "types": ["node", "express"],
+    "types": ["node", "express", "multer", "jest"],
     "baseUrl": ".",
     "paths": {
       "src/*": ["src/*"]

@@ -1,6 +1,6 @@
 import React, { useMemo } from 'react';
 import { useForm } from '@mantine/form';
-import { TextInput, Group, Textarea, Button, Stack, Select } from '@mantine/core';
+import { TextInput, Group, Textarea, Button, Stack, Select, NumberInput } from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { contactSchema, ContactFormData } from 'src/validators/schemas/contactSchema';
 import { useContactForm } from '../hooks/useContactForm';
@@ -9,7 +9,11 @@ import { zodResolver } from 'mantine-form-zod-resolver';
 import { CONTACT_METHODS, EVENT_TYPES } from '../constants/contactFormData';
 import classes from '../Contact.module.css';
 
-export const ContactForm: React.FC = () => {
+interface ContactFormProps {
+  onSuccess?: () => void;
+}
+
+export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
   const { handleSubmit, isSubmitting } = useContactForm();
 
   const form = useForm<ContactFormData>({
@@ -23,9 +27,12 @@ export const ContactForm: React.FC = () => {
       eventLocation: '',
       message: '',
       budget: '',
+      guestCount: 0,
       preferredContactMethod: '',
     },
   });
+
+  // ... (validation logic remains same)
 
   const isFormValid = useMemo(() => {
     const requiredFieldsFilled =
@@ -36,6 +43,7 @@ export const ContactForm: React.FC = () => {
       !!form.values.eventDate &&
       !!form.values.eventLocation &&
       !!form.values.budget &&
+      form.values.guestCount > 0 &&
       !!form.values.preferredContactMethod;
 
     if (!requiredFieldsFilled) {
@@ -50,6 +58,7 @@ export const ContactForm: React.FC = () => {
     const wasSent = await handleSubmit(values);
     if (wasSent) {
       form.reset();
+      onSuccess?.();
     }
   });
 
@@ -128,6 +137,18 @@ export const ContactForm: React.FC = () => {
             placeholder="Enter your budget"
             withAsterisk
             {...form.getInputProps('budget')}
+          />
+        </Group>
+
+        <Group grow className={`${classes.formGroup} ${classes.eventInfoGroup}`}>
+          <NumberInput
+            className={classes.fullWidthInput}
+            label="Guest Count"
+            placeholder="Expected number of guests"
+            withAsterisk
+            min={1}
+            max={10000}
+            {...form.getInputProps('guestCount')}
           />
         </Group>
 

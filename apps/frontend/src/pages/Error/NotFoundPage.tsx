@@ -1,13 +1,13 @@
 import { EmptyState } from 'src/feedback/EmptyState';
 import { useNavigate } from 'react-router-dom';
 import { MapPinOff } from 'lucide-react';
-import { Center } from '@mantine/core';
+import styles from './error.module.css';
 
 const NotFoundPage = () => {
   const navigate = useNavigate();
 
   return (
-    <Center style={{ minHeight: '100vh' }}>
+    <div className={styles.errorPage}>
       <EmptyState
         icon={
           <MapPinOff
@@ -23,7 +23,7 @@ const NotFoundPage = () => {
         secondaryActionLabel="Go back"
         onSecondaryAction={() => navigate(-1)}
       />
-    </Center>
+    </div>
   );
 };
 

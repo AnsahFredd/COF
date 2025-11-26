@@ -12,13 +12,13 @@ import {
   Checkbox,
   Stack,
   Alert,
-  Center,
 } from '@mantine/core';
 import { IconAlertCircle } from '@tabler/icons-react';
 import { loginSchema, type LoginFormData } from 'src/validators';
 import { useLogin } from 'src/features/authentication';
 import { ROUTES } from 'src/constants/routes';
 import { RouterLink } from 'src/components/ui/RouterLink';
+import styles from './auth.module.css';
 
 const LoginPage = () => {
   const { login, isLoading, error } = useLogin();
@@ -44,13 +44,11 @@ const LoginPage = () => {
   const isFormValid = form.values.email.trim() !== '' && form.values.password.trim() !== '';
 
   return (
-    <Center style={{ minHeight: '100vh' }}>
-      <Container size={500}>
+    <div className={styles.authContainer}>
+      <Container size={500} className={styles.authPaper}>
         <Paper withBorder shadow="md" p={30} radius="md">
-          <Title ta="center" fw={900}>
-            Welcome back!
-          </Title>
-          <Text c="dimmed" size="sm" ta="center" mt={5} mb={20}>
+          <Title className={styles.authTitle}>Welcome back!</Title>
+          <Text c="dimmed" size="sm" className={styles.authSubtext}>
             Don't have an account yet?{' '}
             <Anchor size="sm" component={RouterLink} to={ROUTES.SIGNUP}>
               Create account
@@ -58,7 +56,7 @@ const LoginPage = () => {
           </Text>
 
           <form onSubmit={form.onSubmit(handleSubmit)}>
-            <Stack gap="md">
+            <Stack className={styles.formStack}>
               {error && (
                 <Alert icon={<IconAlertCircle size={16} />} title="Login failed" color="red">
                   {error.message || 'Invalid email or password.'}
@@ -89,6 +87,7 @@ const LoginPage = () => {
                 type="submit"
                 loading={isLoading}
                 disabled={!isFormValid || isLoading}
+                className={styles.submitButton}
               >
                 Sign in
               </Button>
@@ -102,7 +101,7 @@ const LoginPage = () => {
           </form>
         </Paper>
       </Container>
-    </Center>
+    </div>
   );
 };
 

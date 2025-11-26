@@ -23,12 +23,25 @@ export const useLogin = () => {
 
       if (res?.user) {
         queryClient.setQueryData(queryKeys.auth.me, res.user);
+
+        /* eslint-disable no-console */
+        console.log('User role:', res.user.role);
+        console.log(
+          'Redirecting to:',
+          res.user.role === 'ADMIN' ? ROUTES.ADMIN.DASHBOARD : ROUTES.HOME
+        );
+
+        // Role-based redirect
+        if (res.user.role === 'ADMIN') {
+          navigate(ROUTES.ADMIN.DASHBOARD);
+        } else {
+          // Regular users go to home for now (no user dashboard yet)
+          navigate(ROUTES.HOME);
+        }
       } else {
         queryClient.invalidateQueries({ queryKey: queryKeys.auth.me });
+        navigate(ROUTES.HOME);
       }
-
-      // Auto redirect to dashboard
-      navigate(ROUTES.DASHBOARD);
     },
   });
 

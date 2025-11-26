@@ -9,7 +9,6 @@ import {
   Container,
   Stack,
   Alert,
-  Center,
   Anchor,
 } from '@mantine/core';
 import { IconAlertCircle, IconCheck } from '@tabler/icons-react';
@@ -17,6 +16,7 @@ import { useSearchParams, Link } from 'react-router-dom';
 import { useResetPassword } from 'src/features/authentication';
 import { resetPasswordSchema, type ResetPasswordFormData } from 'src/validators';
 import { ROUTES } from 'src/constants/routes';
+import styles from './auth.module.css';
 
 const ResetPasswordPage = () => {
   const [searchParams] = useSearchParams();
@@ -46,25 +46,13 @@ const ResetPasswordPage = () => {
 
   if (!token) {
     return (
-      <Center style={{ minHeight: '100vh' }}>
-        <Container size={460}>
+      <div className={styles.authContainer}>
+        <Container size={460} className={styles.authPaper}>
           <Paper withBorder shadow="md" p={40} radius="md">
             <Stack align="center" gap="lg">
-              <Center
-                style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--mantine-color-red-0)',
-                }}
-              >
-                <IconAlertCircle
-                  size={40}
-                  style={{
-                    color: 'var(--mantine-color-red-6)',
-                  }}
-                />
-              </Center>
+              <div className={`${styles.iconContainer} ${styles.iconContainerError}`}>
+                <IconAlertCircle size={40} className={styles.iconError} />
+              </div>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>
@@ -81,38 +69,24 @@ const ResetPasswordPage = () => {
             </Stack>
           </Paper>
         </Container>
-      </Center>
+      </div>
     );
   }
 
   return (
-    <Center style={{ minHeight: '100vh' }}>
-      <Container size={460}>
+    <div className={styles.authContainer}>
+      <Container size={460} className={styles.authPaper}>
         <Paper withBorder shadow="md" p={40} radius="md">
-          <Title ta="center" fw={900} size="h1">
-            Reset your password
-          </Title>
-          <Text c="dimmed" size="sm" ta="center" mt={8} mb={30}>
+          <Title className={styles.authTitle}>Reset your password</Title>
+          <Text c="dimmed" size="sm" className={styles.authSubtext}>
             Enter your new password below
           </Text>
 
           {isSuccess ? (
             <Stack align="center" gap="lg">
-              <Center
-                style={{
-                  width: 80,
-                  height: 80,
-                  borderRadius: '50%',
-                  backgroundColor: 'var(--mantine-color-green-0)',
-                }}
-              >
-                <IconCheck
-                  size={40}
-                  style={{
-                    color: 'var(--mantine-color-green-6)',
-                  }}
-                />
-              </Center>
+              <div className={`${styles.iconContainer} ${styles.iconContainerSuccess}`}>
+                <IconCheck size={40} className={styles.iconSuccess} />
+              </div>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>
@@ -174,7 +148,7 @@ const ResetPasswordPage = () => {
           )}
         </Paper>
       </Container>
-    </Center>
+    </div>
   );
 };
 

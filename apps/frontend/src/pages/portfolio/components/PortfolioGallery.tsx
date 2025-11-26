@@ -1,25 +1,53 @@
 'use client';
 
-import { useState } from 'react';
-import { Title, Box, Container, Text, Divider, Flex } from '@mantine/core';
+import { useState, useEffect } from 'react';
+import { Title, Box, Container, Text, Divider, Flex, LoadingOverlay } from '@mantine/core';
 import Masonry from 'react-masonry-css';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { useLightbox } from '../hooks/useLightbox';
-import { images, slides, breakpointColumnsObj } from '../constants/portfolioImages';
+import { breakpointColumnsObj } from '../constants/portfolioImages';
+import { portfolioService, type PortfolioItem } from 'src/services/api';
 import classes from '../portfolio.module.css';
 
 const PortfolioGallery = () => {
   const { open } = useLightbox();
   const [activeIndex, setActiveIndex] = useState(-1);
+  const [portfolioItems, setPortfolioItems] = useState<PortfolioItem[]>([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchPortfolioItems = async () => {
+      try {
+        const items = await portfolioService.getPortfolioItems();
+        setPortfolioItems(items);
+      } catch (error) {
+        console.error('Failed to fetch portfolio items:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPortfolioItems();
+  }, []);
 
   const handleOpen = (idx: number) => {
     setActiveIndex(idx);
     open(idx);
   };
 
+  // Convert portfolio items to slides format for lightbox
+  const slides = portfolioItems.map((item) => ({
+    src: item.imageUrl,
+    alt: item.title,
+    title: item.title,
+    description: item.description,
+  }));
+
   return (
-    <Box component="section" bg="#fafafa" py={{ base: 60, md: 80 }}>
+    <Box component="section" bg="#fafafa" py={{ base: 60, md: 80 }} pos="relative">
+      <LoadingOverlay visible={loading} />
+
       {/* Luxury Header Section */}
       <Container size="lg" mb={{ base: 50, md: 70 }}>
         <Flex direction="column" align="center" gap={16}>
@@ -81,25 +109,31 @@ const PortfolioGallery = () => {
 
       {/* Image Grid with Masonry */}
       <Container size="lg">
-        <Masonry
-          breakpointCols={breakpointColumnsObj}
-          className={classes.myMasonryGrid}
-          columnClassName={classes.myMasonryGridColumn}
-        >
-          {images.map((src, idx) => (
-            <div key={idx} className={classes.imageCard} onClick={() => handleOpen(idx)}>
-              <div className={classes.imageWrapper}>
-                <img
-                  src={src || '/placeholder.svg'}
-                  alt={`Portfolio ${idx + 1}`}
-                  className={classes.image}
-                  loading={idx > 5 ? 'lazy' : 'eager'}
-                />
-                <div className={classes.imageOverlay} />
+        {portfolioItems.length === 0 && !loading ? (
+          <Text ta="center" c="dimmed" py="xl">
+            No portfolio items available yet.
+          </Text>
+        ) : (
+          <Masonry
+            breakpointCols={breakpointColumnsObj}
+            className={classes.myMasonryGrid}
+            columnClassName={classes.myMasonryGridColumn}
+          >
+            {portfolioItems.map((item, idx) => (
+              <div key={item.id} className={classes.imageCard} onClick={() => handleOpen(idx)}>
+                <div className={classes.imageWrapper}>
+                  <img
+                    src={item.imageUrl || '/placeholder.svg'}
+                    alt={item.title}
+                    className={classes.image}
+                    loading={idx > 5 ? 'lazy' : 'eager'}
+                  />
+                  <div className={classes.imageOverlay} />
+                </div>
               </div>
-            </div>
-          ))}
-        </Masonry>
+            ))}
+          </Masonry>
+        )}
       </Container>
 
       {/* Lightbox Component */}

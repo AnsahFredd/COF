@@ -1,5 +1,6 @@
 import { PrismaClient } from '@prisma/client';
 import { config } from './index';
+import { logger } from '../libs/logger';
 
 declare global {
   // eslint-disable-next-line no-var
@@ -20,9 +21,9 @@ if (config.nodeEnv !== 'production') {
 export const connectToDB = async () => {
   try {
     await prisma.$connect();
-    console.log('Database connected successfully');
+    logger.info('Database connected successfully');
   } catch (error) {
-    console.log('Database connection failed!', error);
+    logger.error('Database connection failed!', error);
     process.exit(1);
   }
 };

@@ -1,0 +1,22 @@
+.homePage {
+  width: 100%;
+  min-height: 100vh;
+}
+
+.section {
+  padding: var(--spacing-3xl) var(--spacing-lg);
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+  .section {
+    padding: var(--spacing-2xl) var(--spacing-md);
+  }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+  .section {
+    padding: var(--spacing-xl) var(--spacing-sm);
+  }
+}

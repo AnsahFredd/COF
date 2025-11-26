@@ -38,7 +38,7 @@ apiClient.interceptors.request.use(
     const token = tokenManager.getToken();
     if (token && config.headers) config.headers.Authorization = `Bearer ${token}`;
     if (env.IS_DEVELOPMENT) {
-      console.warn('📤 API Request', config.method, config.url, config.data);
+      console.warn('API Request', config.method, config.url, config.data);
     }
     return config;
   },

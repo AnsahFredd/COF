@@ -1,3 +1,6 @@
+/* Import global design system */
+@import './styles/breakpoints.css';
+
 /* @import "tailwindcss";
 @import "tw-animate-css";
 

@@ -1,0 +1,9 @@
+.servicesPage {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--mantine-color-dark-8);
+}
+
+.pageWrapper {
+  width: 100%;
+}

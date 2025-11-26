@@ -15,7 +15,8 @@ export const useVerifyEmail = () => {
     mutationFn: (data: VerifyEmailRequest) => authApi.verifyEmail(data),
     onSuccess: () => {
       setTimeout(() => {
-        navigate(ROUTES.DASHBOARD);
+        // Redirect to home (no user dashboard yet)
+        navigate(ROUTES.HOME);
       }, 1500);
     },
   });
