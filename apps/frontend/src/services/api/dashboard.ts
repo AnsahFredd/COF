@@ -40,8 +40,10 @@ export const dashboardService = {
   /**
    * Get recent activity
    */
-  getRecentActivity: async (): Promise<any[]> => {
-    const response = await api.get<{ success: boolean; data: any[] }>('/dashboard/recent-activity');
+  getRecentActivity: async (): Promise<unknown[]> => {
+    const response = await api.get<{ success: boolean; data: unknown[] }>(
+      '/dashboard/recent-activity'
+    );
     return response.data;
   },
 };

@@ -1,5 +1,5 @@
 import { PrismaClient } from '@prisma/client';
-import { uploadFile, deleteFile } from 'src/libs/storage';
+import { uploadFile, deleteFile } from '../../../libs/storage';
 
 const prisma = new PrismaClient();
 

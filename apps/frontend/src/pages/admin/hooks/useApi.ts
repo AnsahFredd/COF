@@ -1,7 +1,10 @@
 import { useEffect, useState } from 'react';
 
 // T = type of data returned by apiFunction
-export const useApi = <T>(apiFunction: () => Promise<T>, dependencies: any[] = []) => {
+export const useApi = <T>(
+  apiFunction: () => Promise<T>,
+  dependencies: React.DependencyList = []
+) => {
   const [data, setData] = useState<T | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);

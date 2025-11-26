@@ -21,7 +21,7 @@ interface ExportOpts {
   filenameBase?: string;
 }
 
-type AnyObj = Record<string, any>;
+type AnyObj = Record<string, unknown>;
 type MaybeDate = string | number | boolean | Date | null | undefined | object;
 
 const NON_EXPORTABLE_IDS = new Set(['select', 'actions']);
@@ -58,7 +58,7 @@ const nowStamp = () => {
   return `${d.getFullYear()}${pad(d.getMonth() + 1)}${pad(d.getDate())}_${pad(d.getHours())}${pad(d.getMinutes())}${pad(d.getSeconds())}`;
 };
 
-const getHeaderText = <T extends AnyObj>(col: Column<T, unknown>) => {
+const getHeaderText = <T>(col: Column<T, unknown>) => {
   switch (col.id) {
     case 'index':
       return '#';
@@ -133,7 +133,7 @@ const getExportValue = (
     case 'createdAt':
       return event.createdAt ? formatDate(new Date(event.createdAt)) : '';
     default: {
-      const v = (event as AnyObj)[columnId];
+      const v = (event as unknown as AnyObj)[columnId] as MaybeDate;
       return formatCell(v);
     }
   }

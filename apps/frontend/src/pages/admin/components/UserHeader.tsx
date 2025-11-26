@@ -57,9 +57,10 @@ export const UserHeader = ({
   const [showColumns, setShowColumns] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
+  const rowSelection = table.getState().rowSelection;
   const showExportButton = useMemo(() => {
     return table.getSelectedRowModel().rows.length > 0;
-  }, [table?.getState().rowSelection]);
+  }, [table, rowSelection]);
 
   const handleShowColumns = () => {
     setShowColumns(!showColumns);
