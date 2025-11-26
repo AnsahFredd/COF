@@ -16,6 +16,7 @@ exports.createCustomerEventSchema = zod_1.z.object({
         eventLocation: zod_1.z.string().min(3, 'Event location must be at least 3 characters'),
         message: zod_1.z.string().optional(),
         budget: zod_1.z.string().min(1, 'Budget is required'),
+        guestCount: zod_1.z.number().int().positive('Guest count must be a positive number').optional(),
         preferredContactMethod: zod_1.z.nativeEnum(client_1.ContactMethod, {
             errorMap: () => ({ message: 'Invalid contact method' }),
         }),
@@ -33,6 +34,7 @@ exports.updateCustomerEventSchema = zod_1.z.object({
         eventLocation: zod_1.z.string().min(3).optional(),
         message: zod_1.z.string().optional(),
         budget: zod_1.z.string().optional(),
+        guestCount: zod_1.z.number().int().positive().optional(),
         preferredContactMethod: zod_1.z.nativeEnum(client_1.ContactMethod).optional(),
         status: zod_1.z.nativeEnum(client_1.CustomerEventStatus).optional(),
         assignedTo: zod_1.z.string().optional(),

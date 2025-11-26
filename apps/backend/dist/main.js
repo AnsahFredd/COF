@@ -7,9 +7,12 @@ const app_1 = __importDefault(require("./app"));
 const database_1 = require("./config/database");
 const config_1 = require("./config");
 const logger_1 = require("./libs/logger");
+const jobs_1 = require("./jobs");
 const startServer = async () => {
     try {
         await (0, database_1.connectToDB)();
+        // Start background jobs
+        (0, jobs_1.startJobs)();
         const server = app_1.default.listen(config_1.config.port, () => {
             logger_1.logger.info(`Server running on port ${config_1.config.port}`);
         });
