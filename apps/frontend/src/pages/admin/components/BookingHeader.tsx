@@ -59,10 +59,9 @@ export const BookingHeader = ({
   const [showColumns, setShowColumns] = useState(false);
   const [showFilters, setShowFilters] = useState(false);
 
-  const rowSelection = table.getState().rowSelection;
   const showExportButton = useMemo(() => {
     return table.getSelectedRowModel().rows.length > 0;
-  }, [table, rowSelection]);
+  }, [table]);
 
   const handleShowColumns = () => {
     setShowColumns(!showColumns);

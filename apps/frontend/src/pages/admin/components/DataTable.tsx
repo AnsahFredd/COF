@@ -46,7 +46,9 @@ export const DataTable = <T extends { id: string | number }>({
                       {col.render ? (
                         col.render(row)
                       ) : (
-                        <Text size="sm">{(row as any)[col.key]}</Text>
+                        <Text size="sm">
+                          {(row as Record<string, unknown>)[col.key] as React.ReactNode}
+                        </Text>
                       )}
                     </Table.Td>
                   ))}
