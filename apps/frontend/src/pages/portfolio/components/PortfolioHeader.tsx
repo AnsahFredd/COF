@@ -1,5 +1,3 @@
-'use client';
-
 import { Box, Stack, Text, Button, Divider } from '@mantine/core';
 import { motion, easeOut } from 'framer-motion';
 import { useRef } from 'react';
