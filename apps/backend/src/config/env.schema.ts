@@ -22,6 +22,6 @@ export const envSchema = z.object({
   EMAIL_PASSWORD: z.string().optional(),
   EMAIL_FROM: z.string().email().optional(),
 
-  FRONTEND_URL: z.string().url().default('http://localhost:5173'),
-  CORS_ORIGIN: z.string().default('http://localhost:5173'),
+  FRONTEND_URL: z.string().url().default('https://cofuelevent.vercel.app'),
+  CORS_ORIGIN: z.string().default('https://cofuelevent.vercel.app'),
 });
