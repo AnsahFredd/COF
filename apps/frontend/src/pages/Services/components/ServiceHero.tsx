@@ -2,7 +2,7 @@ import { Container, Title, Text, Box, Stack } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { easeOut } from 'framer-motion';
 import heroBg from '../../../assets/images/image17.jpg';
-import classes from '../Services.module.css';
+import classes from '../services.module.css';
 
 export default function ServicesHero() {
   const containerVariants = {
