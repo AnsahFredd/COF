@@ -1,13 +1,61 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { easeOut, motion } from 'framer-motion';
 import { Box, Container, SimpleGrid, Title, Text, Button, Stack, Image } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import servicesData from '../constants/servicesData';
 import { Link, useNavigate } from 'react-router-dom';
 import { ROUTES } from 'src/constants/routes';
 
 export default function ServicesGrid() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [visibleCards, setVisibleCards] = useState<Set<number>>(new Set());
   const navigate = useNavigate();
+  const cardRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const isMobile = useMediaQuery('(max-width: 768px)');
+
+  // Intersection Observer for mobile scroll-triggered visibility
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observers = cardRefs.current.map((card, index) => {
+      if (!card) return null;
+
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            setVisibleCards((prev) => {
+              const newSet = new Set(prev);
+              if (entry.isIntersecting) {
+                newSet.add(index);
+              } else {
+                newSet.delete(index);
+              }
+              return newSet;
+            });
+          });
+        },
+        {
+          threshold: 0.5, // Trigger when 50% of card is visible
+          rootMargin: '-50px', // Slight offset for better UX
+        }
+      );
+
+      observer.observe(card);
+      return observer;
+    });
+
+    return () => {
+      observers.forEach((observer) => observer?.disconnect());
+    };
+  }, [isMobile]);
+
+  // Determine if button should be visible
+  const isButtonVisible = (index: number) => {
+    if (isMobile) {
+      return visibleCards.has(index);
+    }
+    return hoveredIndex === index;
+  };
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -49,6 +97,7 @@ export default function ServicesGrid() {
                 onMouseEnter={() => setHoveredIndex(index)}
                 onMouseLeave={() => setHoveredIndex(null)}
                 style={{ cursor: 'pointer' }}
+                ref={(el) => (cardRefs.current[index] = el)}
               >
                 <Box
                   pos="relative"
@@ -141,8 +190,8 @@ export default function ServicesGrid() {
                         y: 10,
                       }}
                       animate={{
-                        opacity: hoveredIndex === index ? 1 : 0,
-                        y: hoveredIndex === index ? 0 : 10,
+                        opacity: isButtonVisible(index) ? 1 : 0,
+                        y: isButtonVisible(index) ? 0 : 10,
                       }}
                       transition={{
                         duration: 0.3,

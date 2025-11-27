@@ -1,11 +1,9 @@
 .formContainer {
   width: 100%;
-  max-width: 900px;
-  margin: 0 auto;
   padding: 2.5rem;
   background: #ffffff;
   border-radius: 24px;
-  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.06);
 }
 
 /* Form Groups */
@@ -28,6 +26,100 @@
   min-width: 0;
 }
 
+/* Modern Input Styling */
+.fullWidthInput :global(.mantine-Input-input) {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  background: #ffffff;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fullWidthInput :global(.mantine-Input-input:focus) {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+  outline: none;
+}
+
+.fullWidthInput :global(.mantine-Input-input::placeholder) {
+  color: #9ca3af;
+}
+
+.fullWidthInput :global(.mantine-InputWrapper-label) {
+  font-weight: 500;
+  color: #1f2937;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+/* Select Dropdown Styling */
+.fullWidthInput :global(.mantine-Select-input) {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fullWidthInput :global(.mantine-Select-input:focus) {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* NumberInput Styling */
+.fullWidthInput :global(.mantine-NumberInput-input) {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fullWidthInput :global(.mantine-NumberInput-input:focus) {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* DateInput Styling */
+.fullWidthInput :global(.mantine-DateInput-input) {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fullWidthInput :global(.mantine-DateInput-input:focus) {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
+/* Textarea Styling */
+.fullWidthInput :global(.mantine-Textarea-input) {
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 0.875rem 1rem;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+  resize: vertical;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fullWidthInput :global(.mantine-Textarea-input:focus) {
+  border-color: #d4af37;
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+}
+
 /* Medium screens */
 @media (max-width: 992px) {
   .formContainer {
@@ -42,29 +134,203 @@
 /* Tablet & Mobile */
 @media (max-width: 768px) {
   .formContainer {
+    width: 100%;
+    max-width: 100%;
     padding: 1.5rem;
     border-radius: 20px;
+    box-sizing: border-box;
   }
 
   .formGroup {
     flex-direction: column;
-    gap: 14px;
+    gap: 0;
+    width: 100%;
+  }
+
+  .fullWidthInput {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    box-sizing: border-box;
+  }
+
+  .fullWidthInput :global(.mantine-Input-wrapper),
+  .fullWidthInput :global(.mantine-Select-wrapper),
+  .fullWidthInput :global(.mantine-NumberInput-wrapper),
+  .fullWidthInput :global(.mantine-DateInput-wrapper),
+  .fullWidthInput :global(.mantine-Textarea-wrapper) {
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .fullWidthInput :global(.mantine-Input-input),
+  .fullWidthInput :global(.mantine-Select-input),
+  .fullWidthInput :global(.mantine-NumberInput-input),
+  .fullWidthInput :global(.mantine-DateInput-input),
+  .fullWidthInput :global(.mantine-Textarea-input) {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
   }
 
   .personalInfoGroup,
   .eventInfoGroup {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0;
+    width: 100%;
   }
 }
 
 /* Small mobile */
 @media (max-width: 480px) {
   .formContainer {
-    padding: 1.25rem;
+    width: 100%;
+    max-width: 100%;
+    padding: 1rem;
     border-radius: 16px;
+    box-sizing: border-box;
   }
 
   .formGroup {
-    gap: 12px;
+    gap: 0;
+    width: 100%;
+  }
+
+  .fullWidthInput {
+    margin-bottom: 0.875rem;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .fullWidthInput :global(.mantine-Input-wrapper),
+  .fullWidthInput :global(.mantine-Select-wrapper),
+  .fullWidthInput :global(.mantine-NumberInput-wrapper),
+  .fullWidthInput :global(.mantine-DateInput-wrapper),
+  .fullWidthInput :global(.mantine-Textarea-wrapper) {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .fullWidthInput :global(.mantine-Input-input),
+  .fullWidthInput :global(.mantine-Select-input),
+  .fullWidthInput :global(.mantine-NumberInput-input),
+  .fullWidthInput :global(.mantine-DateInput-input),
+  .fullWidthInput :global(.mantine-Textarea-input) {
+    padding: 0.75rem 0.875rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+  }
+
+  .fullWidthInput :global(.mantine-InputWrapper-label) {
+    font-size: 0.9rem;
+  }
+}
+
+/* Contact Hero Styles */
+.heroContainer {
+  position: relative;
+  height: 60vh;
+  min-height: 400px;
+  max-height: 600px;
+  width: 100%;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-position: center center;
+  background-size: cover;
+}
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.85) 100%);
+  z-index: 1;
+}
+
+.contentContainer {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 3.5rem;
+  font-weight: 700;
+  font-family: 'Playfair Display', serif;
+  letter-spacing: 1px;
+  margin-bottom: 1rem;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-family: 'Poppins', sans-serif;
+  opacity: 0.9;
+  font-weight: 400;
+  font-size: 1.25rem;
+}
+
+/* Contact Hero - Medium screens */
+@media (max-width: 992px) {
+  .heroContainer {
+    height: 55vh;
+    min-height: 400px;
+    max-height: 550px;
+  }
+
+  .title {
+    font-size: 2.8rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .subtitle {
+    font-size: 1.1rem;
+  }
+}
+
+/* Contact Hero - Tablet & Mobile */
+@media (max-width: 768px) {
+  .heroContainer {
+    height: 50vh;
+    min-height: 350px;
+    max-height: 500px;
+    background-position: center 40%;
+  }
+
+  .contentContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    letter-spacing: 0.5px;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+}
+
+/* Contact Hero - Small mobile */
+@media (max-width: 480px) {
+  .heroContainer {
+    height: 45vh;
+    min-height: 300px;
+    max-height: 400px;
+  }
+
+  .title {
+    font-size: 1.75rem;
+  }
+
+  .subtitle {
+    font-size: 0.9rem;
   }
 }

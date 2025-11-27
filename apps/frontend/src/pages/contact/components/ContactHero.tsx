@@ -2,67 +2,28 @@ import React from 'react';
 import { Box, Title, Text, Container } from '@mantine/core';
 import { motion } from 'framer-motion';
 import Contact_BackgroundImage from 'src/assets/images/contact-backimg.png';
+import classes from '../Contact.module.css';
 
 const ContactHero: React.FC = () => {
   return (
     <Box
       bg={`url(${Contact_BackgroundImage}) center/cover no-repeat`}
-      style={{
-        position: 'relative',
-        height: '100vh',
-        width: '100%',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-      }}
+      className={classes.heroContainer}
     >
       {/* Overlay */}
-      <Box
-        style={{
-          position: 'absolute',
-          inset: 0,
-          background: 'linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.85) 100%)',
-          zIndex: 1,
-        }}
-      />
+      <Box className={classes.overlay} />
 
       {/* Content */}
-      <Container
-        size="lg"
-        style={{
-          position: 'relative',
-          zIndex: 2,
-          textAlign: 'center',
-          color: '#fff',
-          padding: '2rem',
-        }}
-      >
+      <Container size="lg" className={classes.contentContainer}>
         <motion.div
           initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, ease: 'easeOut' }}
         >
-          <Title
-            order={1}
-            style={{
-              fontSize: '3.5rem',
-              fontWeight: 700,
-              fontFamily: "'Playfair Display', serif",
-              letterSpacing: '1px',
-              marginBottom: '1rem',
-            }}
-          >
+          <Title order={1} className={classes.title}>
             Contact Information
           </Title>
-          <Text
-            size="xl"
-            style={{
-              fontFamily: "'Poppins', sans-serif",
-              opacity: 0.9,
-              fontWeight: 400,
-            }}
-          >
+          <Text size="xl" className={classes.subtitle}>
             Get in touch with us
           </Text>
         </motion.div>
