@@ -45,7 +45,13 @@ const PortfolioGallery = () => {
   }));
 
   return (
-    <Box component="section" bg="#fafafa" py={{ base: 60, md: 80 }} pos="relative">
+    <Box
+      component="section"
+      bg="#fafafa"
+      py={{ base: 60, md: 80 }}
+      pos="relative"
+      id="portfolio-gallery"
+    >
       <LoadingOverlay visible={loading} />
 
       {/* Luxury Header Section */}

@@ -1,6 +1,8 @@
 import { Container, Title, Text, Box, Stack } from '@mantine/core';
 import { motion } from 'framer-motion';
 import { easeOut } from 'framer-motion';
+import heroBg from '../../../assets/images/image17.jpg';
+import classes from '../services.module.css';
 
 export default function ServicesHero() {
   const containerVariants = {
@@ -24,68 +26,29 @@ export default function ServicesHero() {
   };
 
   return (
-    <Box
-      component="section"
-      style={{
-        position: 'relative',
-        width: '100%',
-        minHeight: '100vh',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        overflow: 'hidden',
-        background: 'linear-gradient(to bottom, #020617, #0f172a, var(--mantine-color-body))',
-        paddingTop: '5rem',
-      }}
-    >
+    <Box component="section" className={classes.heroSection}>
+      {/* Background Image */}
       <Box
-        style={{
-          position: 'absolute',
-          inset: 0,
-          opacity: 0.3,
-        }}
-      >
-        <Box
-          style={{
-            position: 'absolute',
-            top: '5rem',
-            left: '2.5rem',
-            width: '18rem',
-            height: '18rem',
-            background: 'rgba(217, 119, 6, 0.2)',
-            borderRadius: '9999px',
-            filter: 'blur(64px)',
-            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-          }}
-        />
-        <Box
-          style={{
-            position: 'absolute',
-            bottom: '5rem',
-            right: '2.5rem',
-            width: '24rem',
-            height: '24rem',
-            background: 'rgba(245, 158, 11, 0.1)',
-            borderRadius: '9999px',
-            filter: 'blur(64px)',
-            animation: 'pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
-            animationDelay: '1s',
-          }}
-        />
+        component="img"
+        src={heroBg}
+        alt="Services Background"
+        className={classes.heroBackground}
+      />
+
+      {/* Dark Overlay for text readability */}
+      <Box className={classes.heroOverlay} />
+
+      {/* Decorative blur orbs */}
+      <Box className={classes.decorativeOrbs}>
+        <Box className={classes.orb1} />
+        <Box className={classes.orb2} />
       </Box>
 
       <motion.div variants={containerVariants} initial="hidden" animate="visible">
-        <Container
-          size="lg"
-          style={{
-            position: 'relative',
-            zIndex: 10,
-            textAlign: 'center',
-          }}
-        >
-          <Stack gap="xl">
+        <Container size="lg" className={classes.heroContent}>
+          <Stack gap="xl" align="center">
             <motion.div variants={itemVariants}>
-              <Stack gap="md">
+              <Stack gap="md" align="center">
                 <motion.div
                   initial={{
                     opacity: 0,
@@ -111,16 +74,7 @@ export default function ServicesHero() {
                     Cofuel Events
                   </Text>
                 </motion.div>
-                <Title
-                  order={1}
-                  fw={300}
-                  c="white"
-                  style={{
-                    fontSize: 'clamp(3rem, 7vw, 4.5rem)',
-                    lineHeight: 1.2,
-                    letterSpacing: '-0.02em',
-                  }}
-                >
+                <Title order={1} fw={300} c="white" className={classes.heroTitle}>
                   Our{' '}
                   <Text span fw={400} c="rgb(245, 158, 11)" inherit>
                     Services
@@ -130,46 +84,27 @@ export default function ServicesHero() {
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Text
-                size="xl"
-                fw={300}
-                c="rgb(203, 213, 225)"
-                maw={600}
-                mx="auto"
-                style={{ lineHeight: 1.7 }}
-              >
+              <Text size="xl" fw={300} c="rgb(203, 213, 225)" className={classes.heroSubtitle}>
                 Elevating moments into unforgettable experiences through meticulous attention to
                 detail and creative excellence
               </Text>
             </motion.div>
 
             <motion.div variants={itemVariants}>
-              <Box
-                style={{
-                  width: '4rem',
-                  height: '1px',
-                  background:
-                    'linear-gradient(to right, transparent, rgb(245, 158, 11), transparent)',
-                  margin: '1rem auto 0',
-                }}
-              />
+              <Box className={classes.heroDivider} />
             </motion.div>
 
             <motion.div
+              variants={itemVariants}
               animate={{ y: [0, 8, 0] }}
               transition={{
                 duration: 2,
                 repeat: Number.POSITIVE_INFINITY,
               }}
-              style={{ paddingTop: '2rem' }}
+              className={classes.scrollIconWrapper}
             >
               <svg
-                style={{
-                  width: '1.5rem',
-                  height: '1.5rem',
-                  margin: '0 auto',
-                  color: 'rgb(245, 158, 11)',
-                }}
+                className={classes.scrollIcon}
                 fill="none"
                 stroke="currentColor"
                 viewBox="0 0 24 24"

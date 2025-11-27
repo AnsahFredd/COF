@@ -1,9 +1,8 @@
-'use client';
-
-import { Box, Stack, Text, Button, Divider } from '@mantine/core';
-import { motion, easeOut } from 'framer-motion';
+import { Box, Stack, Text } from '@mantine/core';
+import { motion, Variants } from 'framer-motion';
 import { useRef } from 'react';
 import styles from '../portfolio.module.css';
+import heroBg from 'src/assets/images/image16.jpg';
 
 const PortfolioHeader = () => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -15,79 +14,63 @@ const PortfolioHeader = () => {
     }
   };
 
-  const containerVariants = {
+  const containerVariants: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.15,
-        delayChildren: 0.2,
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
       },
     },
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
+  const itemVariants: Variants = {
+    hidden: { opacity: 0, y: 60 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.8, ease: easeOut },
+      transition: {
+        duration: 1,
+        ease: [0.22, 1, 0.36, 1] as const,
+      },
     },
   };
 
   return (
     <Box className={styles.heroContainer} w="100%" ref={containerRef}>
-      {/* Gradient Background */}
+      <Box component="img" src={heroBg} alt="Hero Background" className={styles.heroBgImage} />
+
       <Box className={styles.gradientOverlay} />
 
-      <motion.div
-        className={styles.heroContent}
-        variants={containerVariants}
-        initial="hidden"
-        animate="visible"
-      >
-        <Stack
-          gap={20}
-          justify="center"
-          align="center"
-          style={{ maxWidth: '900px', textAlign: 'center' }}
-        >
-          <motion.div variants={itemVariants}>
-            <Text component="span" className={styles.eyebrow}>
-              SERVING YOU TO YOUR SATISFACTION
-            </Text>
-          </motion.div>
+      <Box className={styles.gridPattern} />
 
-          <motion.div variants={itemVariants}>
-            <Text component="h1" className={styles.heroTitle}>
-              Cofuel Home of Events
-            </Text>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <Divider className={styles.goldDivider} />
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <Text component="p" className={styles.heroSubtitle}>
-              Creating Timeless Experiences
-            </Text>
-          </motion.div>
-
-          <motion.div variants={itemVariants}>
-            <Button className={styles.ctaButton} onClick={scrollToPortfolio}>
-              View Portfolio
-            </Button>
-          </motion.div>
-        </Stack>
+      <motion.div className={styles.heroContent}>
+        <motion.div variants={containerVariants} initial="hidden" animate="visible">
+          <Stack gap={24} justify="center" align="center" className={styles.contentWrapper}>
+            {/* Main title */}
+            <motion.div variants={itemVariants}>
+              <h1 className={styles.heroTitle}>Crafting Unforgettable Events</h1>
+            </motion.div>
+          </Stack>
+        </motion.div>
       </motion.div>
 
+      {/* Scroll indicator */}
       <motion.div
         className={styles.scrollIndicator}
-        animate={{ y: [0, 10, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
+        animate={{ y: [0, 12, 0] }}
+        transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+        onClick={scrollToPortfolio}
       >
-        <Box className={styles.scrollDot} />
+        <Text className={styles.scrollText}>Scroll to explore</Text>
+        <Box className={styles.scrollDot}>
+          <motion.div
+            className={styles.scrollDotInner}
+            animate={{ y: [0, 8, 0], opacity: [1, 0.3, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity, ease: 'easeInOut' }}
+          />
+        </Box>
       </motion.div>
     </Box>
   );
