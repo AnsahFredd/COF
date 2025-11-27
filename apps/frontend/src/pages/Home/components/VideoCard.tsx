@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Box, Text } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { IconPlayerPlay, IconPlayerPause, IconVolume, IconVolumeOff } from '@tabler/icons-react';
 import { useVideoPlayer } from '../hooks/useVideoPlayer';
 import { Video } from '../interface/index';
@@ -13,10 +14,34 @@ interface VideoCardProps {
 const VideoCard: React.FC<VideoCardProps> = ({ video }) => {
   const theme = useMantineTheme();
   const { videoRef, isPlaying, isMuted, togglePlay, toggleMute } = useVideoPlayer();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const [isVisible, setIsVisible] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsVisible(entry.isIntersecting);
+      },
+      {
+        threshold: 0.6,
+        rootMargin: '-10% 0px -10% 0px',
+      }
+    );
+
+    if (cardRef.current) {
+      observer.observe(cardRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   return (
     <Box
-      className={classes.videoCard}
+      ref={cardRef}
+      className={`${classes.videoCard} ${isMobile && isVisible ? classes.visible : ''}`}
       style={
         {
           '--gold-color': theme.colors.gold[6],

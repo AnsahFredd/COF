@@ -10,8 +10,12 @@ async function seedAdmin() {
   try {
     console.log('Seeding admin user...');
 
-    const adminEmail = 'admin@cofuel.com';
-    const adminPassword = 'cofuel@events7940';
+    const adminEmail = process.env.ADMIN_EMAIL || 'admin@cofuel.com';
+    const adminPassword = process.env.ADMIN_PASSWORD || 'cofuel@events7940';
+
+    if (!process.env.ADMIN_PASSWORD) {
+      console.warn('WARNING: Using default hardcoded password. Please set ADMIN_PASSWORD in .env');
+    }
 
     // Check if admin already exists
     const existingAdmin = await prisma.user.findUnique({

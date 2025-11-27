@@ -1,6 +1,15 @@
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useForm } from '@mantine/form';
-import { TextInput, Group, Textarea, Button, Stack, Select, NumberInput } from '@mantine/core';
+import {
+  TextInput,
+  Group,
+  Textarea,
+  Button,
+  Stack,
+  Select,
+  NumberInput,
+  Checkbox,
+} from '@mantine/core';
 import { DateInput } from '@mantine/dates';
 import { contactSchema, ContactFormData } from 'src/validators/schemas/contactSchema';
 import { useContactForm } from '../hooks/useContactForm';
@@ -15,6 +24,7 @@ interface ContactFormProps {
 
 export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
   const { handleSubmit, isSubmitting } = useContactForm();
+  const [consentChecked, setConsentChecked] = useState(false);
 
   const form = useForm<ContactFormData>({
     validate: zodResolver(contactSchema),
@@ -44,7 +54,8 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
       !!form.values.eventLocation &&
       !!form.values.budget &&
       form.values.guestCount > 0 &&
-      !!form.values.preferredContactMethod;
+      !!form.values.preferredContactMethod &&
+      consentChecked;
 
     if (!requiredFieldsFilled) {
       return false;
@@ -52,12 +63,13 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
 
     const validationResult = contactSchema.safeParse(form.values);
     return validationResult.success;
-  }, [form.values]);
+  }, [form.values, consentChecked]);
 
   const onSubmit = form.onSubmit(async (values) => {
     const wasSent = await handleSubmit(values);
     if (wasSent) {
       form.reset();
+      setConsentChecked(false);
       onSuccess?.();
     }
   });
@@ -161,6 +173,22 @@ export const ContactForm: React.FC<ContactFormProps> = ({ onSuccess }) => {
           minRows={4}
           maxRows={8}
           {...form.getInputProps('message')}
+        />
+
+        {/* Consent Checkbox */}
+        <Checkbox
+          checked={consentChecked}
+          onChange={(event) => setConsentChecked(event.currentTarget.checked)}
+          label="I consent to be contacted via email, text message, or phone call regarding my inquiry"
+          color="gold.6"
+          styles={{
+            label: {
+              fontSize: '0.95rem',
+              color: '#555',
+              cursor: 'pointer',
+            },
+          }}
+          mt="md"
         />
 
         <Group justify="center" mt="md">

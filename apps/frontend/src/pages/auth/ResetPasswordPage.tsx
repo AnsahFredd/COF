@@ -12,6 +12,7 @@ import {
   Anchor,
 } from '@mantine/core';
 import { IconAlertCircle, IconCheck } from '@tabler/icons-react';
+import { IconContainer } from 'src/components/ui/IconContainer';
 import { useSearchParams, Link } from 'react-router-dom';
 import { useResetPassword } from 'src/features/authentication';
 import { resetPasswordSchema, type ResetPasswordFormData } from 'src/validators';
@@ -50,9 +51,9 @@ const ResetPasswordPage = () => {
         <Container size={460} className={styles.authPaper}>
           <Paper withBorder shadow="md" p={40} radius="md">
             <Stack align="center" gap="lg">
-              <div className={`${styles.iconContainer} ${styles.iconContainerError}`}>
-                <IconAlertCircle size={40} className={styles.iconError} />
-              </div>
+              <IconContainer variant="error" size="md">
+                <IconAlertCircle size={40} />
+              </IconContainer>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>
@@ -84,9 +85,9 @@ const ResetPasswordPage = () => {
 
           {isSuccess ? (
             <Stack align="center" gap="lg">
-              <div className={`${styles.iconContainer} ${styles.iconContainerSuccess}`}>
-                <IconCheck size={40} className={styles.iconSuccess} />
-              </div>
+              <IconContainer variant="success" size="md">
+                <IconCheck size={40} />
+              </IconContainer>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>
