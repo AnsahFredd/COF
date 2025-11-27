@@ -87,7 +87,7 @@
 }
 
 .serviceTitle {
-  font-size: clamp(1.5rem, 2.5vw, 2rem);
+  font-size: clamp(1.8rem, 3vw, 2.5rem);
   color: var(--gold-color);
   margin-bottom: 8px;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
@@ -174,5 +174,35 @@
     width: 300px;
     font-size: 1rem;
     padding: 8px 24px;
+  }
+
+  /* Scroll-triggered visibility for mobile */
+  .serviceCard.visible {
+    transform: translateY(-8px);
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  }
+
+  .serviceCard.visible .serviceImage {
+    transform: scale(1.1);
+  }
+
+  .serviceCard.visible .serviceOverlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9) 0%,
+      rgba(0, 0, 0, 0.7) 50%,
+      rgba(0, 0, 0, 0.2) 100%
+    );
+  }
+
+  .serviceCard.visible .serviceTitle {
+    transform: translateY(-4px);
+    text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  }
+
+  .serviceCard.visible .serviceDescription {
+    opacity: 1;
+    transform: translateY(0);
+    max-height: 100px;
   }
 }

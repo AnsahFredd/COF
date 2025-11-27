@@ -32,31 +32,6 @@
   margin-top: var(--spacing-sm);
 }
 
-.iconContainer {
-  width: 80px;
-  height: 80px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.iconContainerSuccess {
-  background-color: var(--mantine-color-green-0);
-}
-
-.iconContainerError {
-  background-color: var(--mantine-color-red-0);
-}
-
-.iconSuccess {
-  color: var(--mantine-color-green-6);
-}
-
-.iconError {
-  color: var(--mantine-color-red-6);
-}
-
 /* Tablet */
 @media (max-width: 768px) {
   .authContainer {

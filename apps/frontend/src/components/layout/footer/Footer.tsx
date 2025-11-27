@@ -1,6 +1,8 @@
 import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 import { SiTiktok } from 'react-icons/si';
 import { Container, SimpleGrid, Text, Stack, Anchor, Group, Box } from '@mantine/core';
+import { Link } from 'react-router-dom';
+import { ROUTES } from 'src/constants/routes';
 import classes from './footer.module.css';
 
 export default function Footer() {
@@ -74,12 +76,12 @@ export default function Footer() {
         <Box className={classes.bottomSection}>
           <Text className={classes.copyright}>© 2025 CofuelEvents</Text>
           <Group gap={24} className={classes.legalLinks}>
-            <Anchor href="#" className={classes.link}>
+            <Link to={ROUTES.TERMS} className={classes.link}>
               Terms & Conditions
-            </Anchor>
-            <Anchor href="#" className={classes.link}>
+            </Link>
+            <Link to={ROUTES.PRIVACY} className={classes.link}>
               Privacy Policy
-            </Anchor>
+            </Link>
           </Group>
           <Text className={classes.reserved}>All rights reserved.</Text>
         </Box>

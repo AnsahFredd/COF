@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Container, Title, Text, Box, Button, Image } from '@mantine/core';
 import { useMantineTheme } from '@mantine/core';
+import { useMediaQuery } from '@mantine/hooks';
 import { SERVICE_CATEGORIES } from '../constants/servicesection';
 import classes from './ServicesSection.module.css';
 import { useNavigate } from 'react-router-dom';
@@ -9,6 +10,42 @@ import { ROUTES } from 'src/constants/routes';
 const ServicesSection = () => {
   const theme = useMantineTheme();
   const navigate = useNavigate();
+  const isMobile = useMediaQuery('(max-width: 768px)');
+  const [visibleCards, setVisibleCards] = useState<Set<string>>(new Set());
+  const cardRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  useEffect(() => {
+    if (!isMobile) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          const cardId = entry.target.getAttribute('data-id');
+          if (cardId) {
+            setVisibleCards((prev) => {
+              const newSet = new Set(prev);
+              if (entry.isIntersecting) {
+                newSet.add(cardId);
+              } else {
+                newSet.delete(cardId);
+              }
+              return newSet;
+            });
+          }
+        });
+      },
+      {
+        threshold: 0.6,
+        rootMargin: '-10% 0px -10% 0px',
+      }
+    );
+
+    Object.values(cardRefs.current).forEach((el) => {
+      if (el) observer.observe(el);
+    });
+
+    return () => observer.disconnect();
+  }, [isMobile]);
 
   return (
     <Box className={classes.servicesContainer}>
@@ -42,7 +79,11 @@ const ServicesSection = () => {
             {category.services.map((service) => (
               <Box
                 key={service.id}
-                className={classes.serviceCard}
+                ref={(el) => (cardRefs.current[service.id] = el)}
+                data-id={service.id}
+                className={`${classes.serviceCard} ${
+                  isMobile && visibleCards.has(service.id) ? classes.visible : ''
+                }`}
                 style={
                   {
                     '--gold-color': theme.colors.gold[6],

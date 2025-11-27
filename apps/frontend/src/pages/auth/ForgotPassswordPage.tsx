@@ -12,6 +12,7 @@ import {
   Alert,
 } from '@mantine/core';
 import { IconAlertCircle, IconMail } from '@tabler/icons-react';
+import { IconContainer } from 'src/components/ui/IconContainer';
 import { Link } from 'react-router-dom';
 import { useForgotPassword } from 'src/features/authentication';
 import { forgotPasswordSchema, type ForgotPasswordFormData } from 'src/validators';
@@ -50,9 +51,9 @@ const ForgotPasswordPage = () => {
 
           {isSuccess ? (
             <Stack align="center" gap="lg">
-              <div className={`${styles.iconContainer} ${styles.iconContainerSuccess}`}>
-                <IconMail size={40} className={styles.iconSuccess} />
-              </div>
+              <IconContainer variant="success" size="md">
+                <IconMail size={40} />
+              </IconContainer>
 
               <Stack gap="xs" align="center">
                 <Title order={3} fw={600}>

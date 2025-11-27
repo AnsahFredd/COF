@@ -264,4 +264,18 @@
     padding: 0 40px;
     grid-auto-rows: 600px;
   }
+
+  /* Scroll-triggered visibility for mobile */
+  .videoCard.visible .videoOverlay {
+    opacity: 1;
+  }
+
+  .videoCard.visible .playButton {
+    transform: translate(-50%, -50%) scale(1.1);
+    background: var(--gold-color);
+  }
+
+  .videoCard.visible .playIcon {
+    color: white;
+  }
 }

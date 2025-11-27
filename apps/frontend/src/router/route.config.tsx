@@ -14,6 +14,8 @@ const ServiceDetail = lazy(() => import('src/pages/Services/ServiceDetail'));
 const ContactPage = lazy(() => import('src/pages/contact/ContactPage'));
 const PortfolioPage = lazy(() => import('src/pages/portfolio/PortfolioPage'));
 const AboutPage = lazy(() => import('src/pages/about/AboutPage'));
+const PrivacyPolicyPage = lazy(() => import('src/pages/legal/PrivacyPolicyPage'));
+const TermsPage = lazy(() => import('src/pages/legal/TermsPage'));
 
 // Auth Pages
 const LoginPage = lazy(() => import('src/pages/auth/LoginPage'));
@@ -48,6 +50,8 @@ export const appRoutes: AppRoute[] = [
   { path: ROUTES.CONTACT, element: <ContactPage /> },
   { path: ROUTES.PORTFOLIO, element: <PortfolioPage /> },
   { path: ROUTES.ABOUT, element: <AboutPage /> },
+  { path: ROUTES.PRIVACY, element: <PrivacyPolicyPage /> },
+  { path: ROUTES.TERMS, element: <TermsPage /> },
 
   // Auth Routes
   { path: ROUTES.LOGIN, element: <LoginPage /> },
